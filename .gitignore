@@ -1,0 +1,84 @@
+# === SNAKEMAKE PIPELINE .GITIGNORE ===
+
+# Snakemake generated files and directories
+.snakemake/
+*.snakemake.*
+
+# Output directories (keep structure, ignore content)
+output/
+!output/.gitkeep
+logs/
+!logs/.gitkeep
+
+# Data directory (usually large files)
+data/
+!data/.gitkeep
+# Uncomment to allow specific example datasets:
+# !data/example/
+# !data/example/**
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Resources with external repositories
+resources/databases/xx/
+
+# Temporary and cache files
+*.tmp
+*.temp
+.cache/
+tmp/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Conda/Mamba environments (if stored locally)
+envs/*/
+!envs/*.yaml
+!envs/*.yml
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# R files (if using R in the pipeline)
+.Rhistory
+.Rdata
+.RData
+
+# Keep important project files
+!config.yaml
+!config/
+!config/**
+!rules/
+!rules/**
+!scripts/
+!scripts/**
+!README.md
+!LICENSE
+!CHANGELOG.md
+!CONTRIBUTING.md
+!.gitignore
+
+# Keep essential resource files
+!resources/setup_conda_singularity.sh
+!resources/mutations.tsv
+!resources/reference/
+!resources/reference/**/*.fasta
+!resources/reference/**/*.gff
+!resources/reference/**/*.faa
