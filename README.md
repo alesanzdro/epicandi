@@ -1,4 +1,4 @@
-# epicandi
+# EPICANDI
 
 ## Project Overview
 
