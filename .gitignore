@@ -25,6 +25,9 @@ __pycache__/
 
 # Resources with external repositories
 resources/databases/xx/
+resources/genomes/*.fasta
+resources/genomes/*.gff3
+!resources/genomes/README.md
 
 # Temporary and cache files
 *.tmp

@@ -1,0 +1,8 @@
+name: epicandi_clair3
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # --- Variant Calling (Nanopore) ---
+  - clair3

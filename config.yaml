@@ -1,0 +1,105 @@
+resources:
+  default:
+    threads: 2
+    mem: 8192 # 8 GB
+    walltime: 480 # 8 horas
+  nanoplot:
+    threads: 6
+    mem: 8192 # 8 GB
+    walltime: 480 # 8 horas
+  porechop:
+    threads: 8
+    mem: 16384 # 16 GB
+    walltime: 720 # 12 horas
+  filtlong:
+    threads: 2
+    mem: 8192 # 8 GB
+    walltime: 480 # 8 horas
+  flye:
+    threads: 64
+    mem: 262144 # 256 GB
+    walltime: 1440 # 24 horas
+  medaka:
+    threads: 20
+    mem: 49152 # 48 GB
+    walltime: 480 # 8 horas
+  quast:
+    threads: 12
+    mem: 16384 # 16 GB
+    walltime: 120 # 2 horas
+  kraken2:
+    threads: 32
+    mem: 262144 # 256 GB
+    walltime: 720 # 12 horas
+  prokka:
+    threads: 16
+    mem: 32768 # 32 GB
+    walltime: 480 # 8 horas
+  multiqc:
+    threads: 4
+    mem: 8192 # 8 GB
+    walltime: 120 # 2 horas
+  checkm2:
+    threads: 8
+    mem: 16384 # 16 GB
+    walltime: 240 # 4 horas
+  minimap2:
+    threads: 16
+    mem: 32768 # 32 GB
+    walltime: 480 # 8 horas
+  samtools:
+    threads: 6
+    mem: 8192 # 8 GB
+    walltime: 120 # 2 horas
+  mosdepth:
+    threads: 4
+    mem: 8192 # 8 GB
+    walltime: 120 # 2 horas
+  busco:
+    threads: 16
+    mem: 32768
+    walltime: 480
+
+
+
+# =====================================================
+# METADATOS DINÁMICOS DEL RUN (usados en MultiQC)
+# Puedes modificar estos valores por carrera y se reflejarán
+# automáticamente en el reporte MultiQC renderizado.
+# Si faltan, se usarán valores por defecto "UNKNOWN".
+# =====================================================
+run_metadata:
+  run_name: "250814_EPIM208"
+  sequencing_platform: "Oxford Nanopore Mk1C"
+  sequencer_id: "MC112687"
+  dorado_version: "1.1.1"
+  dorado_model: "dna_r10.4.1_e8.2_400bps_sup@v5.2.0"
+
+
+# Kraken2 configuration
+kraken_db: "/almacenamiento/0_DB/kraken2/pluspfp_250714"
+kraken_conf: "0.1"
+
+# QUAST configuration
+quast_params: "--fungus"  # Puede ser "" para nada, o "--busco --fungus" para hongos
+
+# CheckM2 configuration
+# Ruta al archivo DIAMOND de CheckM2; puede ser relativa a la raíz del proyecto
+# Se resolverá a ruta absoluta automáticamente en el Snakefile
+checkm2_db: "resources/CheckM2_database/uniref100.KO.1.dmnd"
+# Extensión de los FASTA a buscar en el directorio de entrada de checkm2
+checkm2_extension: ".fasta"
+
+# BUSCO Configuration ---
+# Specify the lineage dataset to use.
+# Common options: bacteria_odb10, archaea_odb10, fungi_odb10, ascomycota_odb10
+
+# Para Candida auris, usar debaryomycetaceae_odb12
+#busco_lineage: "debaryomycetaceae_odb12"
+# Si hay Nakaseomyces glabratus (antes Candida glabrata) en las muestras, usar saccharomycetes_odb12   
+busco_lineage: "saccharomycetes_odb12"
+#busco_lineage: "fungi_odb10"
+
+# Extra parameters for BUSCO. --force is highly recommended for Snakemake
+# to allow rerunning the rule without manually deleting the output folder.
+busco_params: "--force"

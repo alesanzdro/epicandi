@@ -1,0 +1,4 @@
+id,illumina_r1,illumina_r2,nanopore,dorado_model
+EPI003102,,,/home/asanzc/epicandi/data/250814_EPIM208/EPI003102.fastq.gz,r1041_e82_400bps_sup_v5.2.0
+EPI003135,,,/home/asanzc/epicandi/data/250814_EPIM208/EPI003135.fastq.gz,r1041_e82_400bps_sup_v5.2.0
+Negativo,,,/home/asanzc/epicandi/data/250814_EPIM208/Negativo.fastq.gz,r1041_e82_400bps_sup_v5.2.0

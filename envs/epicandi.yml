@@ -1,0 +1,44 @@
+name: epicandi
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # --- Core Libraries & Utilities ---
+  - python==3.12.11
+  - biopython==1.85
+  - pandas==2.3.2
+  - pip
+  - pip:
+    - kaleido>=1.0.0
+  # --- QC & Filtering ---
+  - bbmap==39.33
+  - fastp==1.0.1
+  - fastqc==0.12.1
+  - fastplong==0.4.1
+  - filtlong==0.3.1
+  - nanoplot==1.46.1
+  - porechop==0.2.4
+  # --- Taxonomic Classification ---
+  - kraken2==2.1.6
+  # --- Genome Assembly ---
+  - flye==2.9.6
+  - spades==4.2.0
+  # --- Assembly Polishing ---
+  - medaka==2.1.1
+  - pilon==1.24
+  - pypolca==0.4.0
+  # --- Assembly Evaluation ---
+  - busco==6.0.0
+  - checkm2==1.1.0
+  - quast==5.3.0
+  # --- Mapping & Variant Calling ---
+  - bcftools==1.22
+  - bedtools==2.31.1
+  - minimap2==2.30
+  - mosdepth==0.3.11
+  - samtools==1.22.1
+  # --- Comparative Genomics & Analysis ---
+  - blast=2.16.0
+  - emboss==6.6.0
+  - mafft==7.526

@@ -1,0 +1,6 @@
+organism,strain,name,accession,,chr,start,end,orientation,symbol,gene_id,gene_type,transcript,length_nt,protein,length_aa,protein_name,mutations,resistance,resistance_names
+Candidozyma auris,B11220,FUR1,GCF_003013715.1,NC_072813.1,2,2503529,2504185,minus,CJI96_0002603,40029289,protein-coding,XM_029036114.2,657,XP_028891356.1,218,uracil phosphoribosyltransferase,"M1- S2- T3- P4- Q5- N6- V7- S8- K9- N10- V11- S84L F211I",5FC,Flucitosina
+Candidozyma auris,B11220,FKS1,GCF_003013715.1,NC_072812.1,1,2928843,2934509,minus,CJI96_0001351,40026130,protein-coding,XM_029033040.2,5667,XP_028893355.2,1888,"1,3-beta-glucan_synthase_component_FKS1","F635C, S639F, S639P, S639Y","MFG, CAS, AFG","Micafungina, Caspofungina, Anidulafungina"
+Candidozyma auris,B11220,CDR1,GCF_003013715.1,NC_072813.1,2,338838,343364,minus,CJI96_0001597,40025314,protein-coding,XM_029032254.2,4527,XP_028892569.2,1508,multidrug_resistance_protein_CDR1,V704L,FLC,Fluconazol
+Candidozyma auris,B11220,FCY1,GCF_003013715.1,NC_072815.1,4,1108168,1108668,plus,CJI96_0004182,40030625,protein-coding,XM_029037411.2,453,XP_028888467.1,150,cytosine deaminase,S70R,5FC,Flucitosina
+Candidozyma auris,B11220,ERG11,GCF_003013715.1,NC_072812.1,1,2581644,2583218,plus,CJI96_0001197,40026303,protein-coding,XM_029033208.2,1575,XP_028891800.2,524,sterol 14-demethylase,"F126L Y132F K143R",FLC,Fluconazol
