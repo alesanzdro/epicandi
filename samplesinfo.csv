@@ -1,0 +1,5 @@
+id,illumina_r1,illumina_r2,nanopore,dorado_model
+EPI003361,data/illumina/250915_EPIM209/EPI003361_S189_R1_001.fastq.gz,data/illumina/250915_EPIM209/EPI003361_S189_R2_001.fastq.gz,NA,NA
+EPI003102,data/illumina/250915_EPIM209/EPI003360_S188_R1_001.fastq.gz,data/illumina/250915_EPIM209/EPI003360_S188_R2_001.fastq.gz,data/nanopore/250814_EPIM208/EPI003102.fastq.gz,r1041_e82_400bps_sup_v5.2.0
+EPI003135,NA,NA,data/nanopore/250814_EPIM208/EPI003135.fastq.gz,r1041_e82_400bps_sup_v5.2.0
+Negativo,NA,NA,data/nanopore/250814_EPIM208/Negativo.fastq.gz,r1041_e82_400bps_sup_v5.2.0

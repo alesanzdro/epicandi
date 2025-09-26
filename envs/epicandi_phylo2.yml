@@ -1,0 +1,30 @@
+name: epicandi_phylo2
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # --- Core Libraries ---
+  - python==3.11.9
+  - ete3==3.1.3
+  # --- Comparative Genomics & Variant Calling ---
+  - fastani==1.34
+  - auriclass==0.5.4
+  - snippy==4.6.0
+  - snp-sites==2.5.1
+  - ncbi-datasets-cli==18.8.0
+  # --- Variant Annotation ---
+  - snpeff==5.2
+  # --- Phylogenetics ---
+  - iqtree==3.0.1
+  - fasttree==2.2.0
+  - panaroo==1.5.2
+  - prokka==1.14.6
+  # --- Assembly to assembly ---
+  - mummer==3.23
+  - sourmash==4.9.4
+  - mash==2.3
+  - numpy==1.26.4
+  - scipy==1.16.2
+  # --- Reporting ---
+  - multiqc==1.31

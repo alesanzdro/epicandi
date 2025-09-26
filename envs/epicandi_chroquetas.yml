@@ -1,0 +1,8 @@
+name: epicandi_chroquetas
+channels:
+  - conda-forge
+  - bioconda
+  - nmquijada
+  - defaults
+dependencies:
+  - chroquetas==1.0.0

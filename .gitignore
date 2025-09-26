@@ -1,0 +1,95 @@
+# === SNAKEMAKE PIPELINE .GITIGNORE ===
+
+# Snakemake generated files and directories
+.snakemake/
+*.snakemake.*
+
+# Output directories (keep structure, ignore content)
+output/
+!output/.gitkeep
+logs/
+!logs/.gitkeep
+
+# Data directory (usually large files)
+data/
+!data/.gitkeep
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# PNG images in root (except specific ones)
+*.png
+!epicandi_dag.png
+!logo_epicandi.png
+
+# Resources directory - only allow mutations folder
+resources/
+!resources/mutations/
+!resources/mutations/**
+
+# External downloads (BUSCO should be in resources/busco)
+busco_downloads/
+
+# Temporary and cache files
+*.tmp
+*.temp
+.cache/
+tmp/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Conda/Mamba environments (if stored locally)
+envs/*/
+!envs/*.yaml
+!envs/*.yml
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# R files (if using R in the pipeline)
+.Rhistory
+.Rdata
+.RData
+
+# Keep important project files
+!config.yaml
+!config/
+!config/**
+!rules/
+!rules/**
+!scripts/
+!scripts/**
+!docs/
+!docs/**
+!README.md
+!LICENSE
+!CHANGELOG.md
+!CONTRIBUTING.md
+!.gitignore
+
+# Backup of previous git history (local only, do not commit)
+.git_backup_20250926/
+
+# --- Forced ignores (override previous negations) ---
+# A las líneas anteriores que usan !scripts/** se les cuelan los pycache y .pyc.
+# Estas reglas al final vuelven a ignorarlos incluso dentro de carpetas whitelisteadas.
+**/__pycache__/
+*.py[cod]
+*$py.class

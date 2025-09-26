@@ -1,0 +1,12 @@
+name: epicandi_fun
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python==3.11.13
+  - orthofinder==3.1.0
+  - funannotate==1.8.17
+  - seqkit==2.10.1
+  - iqtree==3.0.1
+# https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.22-61.0/interproscan-5.22-61.0-64-bit.tar.gz

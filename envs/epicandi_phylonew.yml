@@ -1,0 +1,27 @@
+name: epicandi_phylonew
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # --- Core Environment & Libraries ---
+  - python==3.11.13
+  - numpy==2.3.3
+  - scipy==1.16.2
+  # --- Sequence Manipulation & Utilities ---
+  - seqkit==2.10.1
+  # --- Genome Annotation ---
+  - funannotate==1.8.17
+  # --- Whole-Genome Comparison & Triage ---
+  - fastani==1.34
+  - mash==2.3
+  - sourmash==4.9.4
+  - mummer==3.23
+  - auriclass==0.5.4
+  # --- Orthology Inference ---
+  - orthofinder==3.1.0
+  # --- Phylogenetics & Visualization ---
+  - iqtree==3.0.1
+  - fasttree==2.2.0
+  - snp-sites==2.5.1
+  - ete3==3.1.3

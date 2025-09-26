@@ -1,0 +1,30 @@
+name: epicandi_fun
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python==3.11.13
+  - orthofinder==3.1.0
+  ## Funannotate2
+  - augustus==3.5.0
+  - buscolite==25.4.24
+  - diamond==2.1.13
+  - gapmm2==25.8.12
+  - gb-io==0.3.6
+  - gfftk==25.6.10
+  - glimmerhmm==3.0.4
+  - minimap2==2.30
+  - miniprot==0.18
+  - snap==2017_03_01
+  - table2asn==1.28.1179
+  - trnascan-se==2.0.12
+  - tantan==51
+  - seqkit==2.10.1
+  # GeneMark
+  - perl-hash-merge==0.302
+  - perl-mce==1.902
+  - perl-math-utils==1.14
+  - perl-threaded==5.32.1
+  - perl-parallel-forkmanager==2.04
+  - perl-yaml==1.30

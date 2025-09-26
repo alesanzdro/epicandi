@@ -1,0 +1,233 @@
+# MultiQC config template (placeholders will be replaced)
+# Placeholders: __RUN_NAME__, __SEQUENCER_ID__, __DORADO_VERSION__, __DORADO_MODEL__, __SEQUENCING_PLATFORM__
+
+# MultiQC config para ONT Assembly Pipeline v1.30
+title: "EPIMOL - ONT Assembly Pipeline Report"
+subtitle: "Quality control, assembly metrics and coverage analysis"
+intro_text: "This report contains QC metrics for Oxford Nanopore sequencing data, assembly statistics, taxonomy, and coverage analysis."
+
+# Opciones del reporte
+show_analysis_paths: False
+show_analysis_time: True
+default_view: 'report'
+
+custom_logo: "conf/multiqc/logo.png"
+custom_logo_url: "https://fisabio.san.gva.es/es/"
+custom_logo_title: "FISABIO"
+
+sp:
+  busco_summary:
+    fn: '*busco_summary_mqc.tsv'
+
+# Ignorar archivos problemáticos de nanostats
+fn_ignore_files:
+  - '**/nanostats/*_n50.json'
+  - '**/nanostats/*_mean*.json'
+  - '*.bam'
+
+# Orden de módulos
+module_order:
+  - nanostat
+  - checkm2
+  - samtools
+  - kraken
+  - quast
+  - mosdepth
+  - prokka
+  - custom_content
+
+# Orden de secciones del reporte
+report_section_order:
+  nanostat:
+    order: 2000
+  checkm2:
+    order: 900
+  samtools:
+    order: 800
+  kraken:
+    order: 700
+  quast:
+    order: 600
+  mosdepth:
+    order: 500
+  prokka:
+    order: 400
+  custom_content:
+    order: 300
+
+# Información de versiones de software
+software_versions:
+  quality_control_and_filtering:
+    porechop: "0.2.4"
+    filtlong: "0.3.0"
+    nanoplot: "1.46.1"
+  de_novo_assembly:
+    canu: "2.3"
+    flye: "2.9.6"
+    hifiasm: "0.25.0"
+  polishing_and_assembly_evaluation:
+    medaka: "2.1.1"
+    quast: "5.3.0"
+    checkm2: "1.1.0"
+    busco: "6.0.0"
+  mapping_and_alignment:
+    minimap2: "2.30"
+    bwa: "0.7.19"
+  post-mapping_analysis:
+    samtools: "1.22.1"
+    mosdepth: "0.3.10"
+    bcftools: "1.22"
+    bedtools: "2.31.1"
+  functional_and_taxonomic_analysis:
+    prokka: "1.14.6"
+    kraken2: "2.1.6"
+    blast: "2.16.0"
+    diamond: "2.1.13"
+  utilities_and_reporting:
+    entrez-direct: "22.4"
+    multiqc: "1.31"
+
+
+# Información del header del reporte (dinámica)
+report_header_info:
+  - Contact E-mail: "vigilancia.genomica@fisabio.es"
+  - Sequencing Platform: "__SEQUENCING_PLATFORM__"
+  - Sequencer ID: "__SEQUENCER_ID__"
+  - Dorado_version: "__DORADO_VERSION__"
+  - Dorado_model: "__DORADO_MODEL__"
+
+# ============================================
+# CONFIGURACIÓN CRÍTICA DE COLUMNAS - CORREGIDA
+# ============================================
+
+# 1. Control de visibilidad de columnas (qué columnas mostrar/ocultar)
+table_columns_visible:
+  NanoStat:
+    "Number of reads_fastq": true
+    "Total bases_fastq": true
+    "Mean read length_fastq": true
+    "Median read length_fastq": false
+    "Read length N50_fastq": true
+    "Mean read quality_fastq": true
+    "Active channels": false
+  CheckM2:
+    Completeness: true
+    Contamination: true
+    "Completeness_Model_Used": false
+    "Translation_Table_Used": false
+  QUAST:
+    "Total length": true
+    "# contigs": true
+    N50: true
+    "Largest contig": true
+    "# misassemblies": false
+    GC: false
+  Mosdepth:
+    "1X": true
+    "5X": true
+    "10X": true
+    "30X": false
+    "50X": false
+  Prokka:
+    CDS: false
+    tRNA: false
+    tmRNA: false
+    rRNA: false
+    Organism: false
+  Kraken:
+    percent_classified: true
+    percent_unclassified: true
+
+# 2. Orden de columnas
+table_columns_placement:
+  NanoStat:
+    "Number of reads_fastq": 100
+    "Total bases_fastq": 110
+    "Mean read length_fastq": 120
+    "Median read length_fastq": 130
+    "Read length N50_fastq": 140
+    "Mean read quality_fastq": 150
+  QUAST:
+    "Total length": 300
+    "# contigs": 310
+    N50: 320
+    "Largest contig": 330
+  CheckM2:
+    Completeness: 500
+    Contamination: 510
+  Mosdepth:
+    "1X": 800
+    "5X": 810
+    "10X": 820
+    "30X": 830
+  Prokka:
+    CDS: 900
+    tRNA: 910
+  Kraken:
+    percent_classified: 1000
+    percent_unclassified: 1010
+
+# 3. Renombrar columnas
+table_columns_name:
+  NanoStat:
+    "Number of reads_fastq": "Nº Lecturas"
+    "Total bases_fastq": "Bases Totales (bp)"
+    "Mean read length_fastq": "Longitud Media"
+    "Median read length_fastq": "Longitud Mediana"
+    "Read length N50_fastq": "N50 Lecturas"
+    "Mean read quality_fastq": "Calidad Media"
+  QUAST:
+    "Total length": "Tamaño Ensamblaje (bp)"
+    "# contigs": "Nº Contigs"
+    N50: "N50 Ensamblaje"
+    "Largest contig": "Contig Mayor (bp)"
+  CheckM2:
+    Completeness: "Completitud (%)"
+    Contamination: "Contaminación (%)"
+  Mosdepth:
+    "1X": "Cobertura ≥1X (%)"
+    "5X": "Cobertura ≥5X (%)"
+    "10X": "Cobertura ≥10X (%)"
+    "30X": "Cobertura ≥30X (%)"
+  Prokka:
+    CDS: "Genes CDS"
+    tRNA: "Genes tRNA"
+  Kraken:
+    percent_classified: "% Clasificado"
+    percent_unclassified: "% Sin Clasificar"
+  general_stats_table:
+    cov: "Coverage Assembly"
+    coverage: "Cobertura Media"
+
+# 4. Configuración específica de Mosdepth
+mosdepth_config:
+  general_stats_coverage: [1, 5, 10, 30]
+
+# 5. Configuración de Kraken
+kraken:
+  top_n: 5
+
+report_comment: "<b>RUN:</b> __RUN_NAME__"
+
+# Normalización de nombres de muestra (BUSCO y otros)
+sample_names:
+  # Eliminar sufijos de summaries BUSCO renombrados
+  - pattern: ".busco_summary"
+    replace: ""
+  - pattern: ".full_table"
+    replace: ""
+  - pattern: "short_summary.specific.fungi_odb10."
+    replace: ""
+  - pattern: "short_summary.specific."
+    replace: ""
+
+# Extensiones a limpiar de labels
+fn_clean_exts:
+  - .txt
+  - .tsv
+  - .json
+  - .busco_summary
+  - .full_table
+  - .mosdepth.global.dist
+  - .mosdepth.summary
+  - .mosdepth

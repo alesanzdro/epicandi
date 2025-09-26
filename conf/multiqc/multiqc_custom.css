@@ -1,0 +1,127 @@
+/* ====================================
+   CSS Personalizado para MultiQC
+   Elimina elementos no deseados y personaliza el aspecto
+   ==================================== */
+
+/* OCULTAR EL LOGO GRANDE DE MULTIQC EN EL TÍTULO */
+#mqc_header_title img {
+    display: none !important;
+}
+
+/* Alternativa: ocultar todo el logo del header pero mantener el texto */
+.navbar-brand img {
+    display: none !important;
+}
+
+/* OCULTAR EL BANNER AZUL DE BIENVENIDA/VIDEO */
+#mqc-welcome-alert {
+    display: none !important;
+}
+
+/* Ocultar cualquier alert de bienvenida */
+.alert-info:has(a[href*="youtube"]) {
+    display: none !important;
+}
+
+/* Ocultar específicamente el mensaje "Welcome! Not sure where to start?" */
+.alert:contains("Welcome") {
+    display: none !important;
+}
+
+/* Alternativa más agresiva: ocultar TODOS los alerts informativos */
+.mqc-section .alert-info {
+    display: none !important;
+}
+
+/* ====================================
+   PERSONALIZACIONES ADICIONALES OPCIONALES
+   ==================================== */
+
+/* Hacer el título más prominente sin el logo */
+#mqc_header_title {
+    font-size: 2.2em;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+/* Ajustar el espacio del header después de quitar el logo */
+.navbar-brand {
+    padding: 10px 15px;
+}
+
+/* Personalizar colores del tema FISABIO */
+:root {
+    --primary-color: #0066cc;  /* Azul FISABIO */
+    --secondary-color: #f39c12; /* Naranja/amarillo GVA */
+}
+
+/* Cambiar color de los headers de sección */
+.mqc-section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Estilizar la tabla de General Statistics */
+#general_stats_table {
+    margin-top: 20px;
+}
+
+/* Quitar el texto "MultiQC" del footer si existe */
+footer a[href*="multiqc.info"] {
+    display: none !important;
+}
+
+/* Mantener solo tu logo personalizado visible */
+.side-nav-logo {
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+/* Ocultar el número de versión de MultiQC si aparece */
+.mqc-version {
+    display: none !important;
+}
+
+/* ====================================
+   FIXES ESPECÍFICOS PARA ELEMENTOS MOLESTOS
+   ==================================== */
+
+/* Ocultar el tutorial/welcome mediante su ID específico */
+div[id*="welcome"], 
+div[class*="welcome-message"],
+.tutorial-alert {
+    display: none !important;
+}
+
+/* Ocultar botones de "Watch a tutorial video" */
+a[href*="tutorial"], 
+a[href*="youtube"],
+button:contains("Watch") {
+    display: none !important;
+}
+
+/* Limpiar el espacio superior después de quitar elementos */
+.mqc-content {
+    padding-top: 10px !important;
+}
+
+/* ====================================
+   MEJORAS DE LEGIBILIDAD
+   ==================================== */
+
+/* Hacer las columnas de la tabla más legibles */
+.table > thead > tr > th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Mejorar contraste en filas alternadas */
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(0, 102, 204, 0.03);
+}
+
+/* Resaltar filas al pasar el mouse */
+.table-hover > tbody > tr:hover {
+    background-color: rgba(0, 102, 204, 0.08);
+}

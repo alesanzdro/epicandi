@@ -1,0 +1,260 @@
+# =====================================================
+# DYNAMIC RUN METADATA (used in MultiQC)
+# You can modify these values per run, and they will be reflected
+# automatically in the rendered MultiQC report.
+# If missing, default "UNKNOWN" values will be used.
+# =====================================================
+run_metadata:
+  run_name: "250814_EPIM208"
+  sequencing_platform: "Oxford Nanopore Mk1C"
+  sequencer_id: "MC112687"
+  dorado_version: "1.1.1"
+  dorado_model: "dna_r10.4.1_e8.2_400bps_sup@v5.2.0"
+
+# Main parameters
+general:
+  genome_size: "13m"
+  min_length: 1000
+  min_mean_q: 12
+  output_dir: "output"
+
+# Platform-specific QC thresholds
+qc_thresholds:
+  illumina_min_reads: 50000  # 50K single reads
+  nanopore_min_reads: 5000   # 5K minimum reads
+
+# Assembly configuration
+assembly:
+  flye:
+    genome_size: "13m"
+    params: "--min-overlap 1000"
+  medaka:
+    model: "r1041_e82_400bps_sup_v4.2.0"
+  pilon:
+    polishers: 3
+  pypolca:
+    params: "--min_alt 4 --min_ratio 2"
+
+# Kraken2 configuration
+kraken_db: "/almacenamiento/0_DB/kraken2/pluspfp_250714"
+kraken_conf: "0.1"
+
+GENEMARK_DIR: "/home/asanzc/epicandi/resources/genemark/gmes_linux_64_4"
+
+# QUAST configuration
+quast_params: "--fungus"  # Can be "" for nothing, or "--busco --fungus" for fungi
+
+# CheckM2 configuration
+# Path to the CheckM2 DIAMOND file; can be relative to the project root
+# It will be automatically resolved to an absolute path in the Snakefile
+checkm2_db: "resources/checkm2/CheckM2_database/uniref100.KO.1.dmnd"
+
+# Phylogenetic analysis configuration
+phylogenetics:
+  # Control which phylogenetic methodologies to run:
+  # - "none": Skip all phylogenetic analysis
+  # - "triage": Fast assembly-to-assembly comparison only (5-10 min)
+  # - "orthologs": Comprehensive ortholog-based analysis only (2-4 hours)
+  # - "all": Run both triage and ortholog methodologies
+  methodology: "triage"  # Options: none, triage, orthologs, all
+
+  # Triage tree parameters (fast analysis)
+  triage:
+    tools: ["fastani", "mash", "sourmash"]  # Tools for assembly comparison
+    min_ani: 0.8  # Minimum ANI threshold for inclusion
+
+  # Ortholog tree parameters (comprehensive analysis)
+  orthologs:
+    min_taxa_fraction: 0.8  # Minimum fraction of taxa required per ortholog
+    max_orthologs: 100      # Maximum number of orthologs to use
+    min_seq_length: 150     # Minimum non-gap sequence length
+    alignment_method: "core_orthologs"  # Method: core_orthologs, amas_concat
+    iqtree_params: "-bb 1000 -m MFP"  # Additional IQ-TREE parameters
+# FASTA extension to search for in the checkm2 input directory
+checkm2_extension: ".fasta"
+
+# BUSCO Configuration ---
+# Specify the lineage dataset to use.
+# Common options: bacteria_odb10, archaea_odb10, fungi_odb10, ascomycota_odb10
+
+# For Candida auris, use debaryomycetaceae_odb12
+#busco_lineage: "debaryomycetaceae_odb12"
+# If Nakaseomyces glabratus (formerly Candida glabrata) is in the samples, use saccharomycetes_odb12   
+busco_lineage: "saccharomycetes_odb12"
+#busco_lineage: "fungi_odb10"
+
+# Extra parameters for BUSCO. --force is highly recommended for Snakemake
+# to allow rerunning the rule without manually deleting the output folder.
+busco_params: "--force"
+
+# =====================================================
+# ILLUMINA FILENAME NORMALIZATION
+# Common suffix patterns added by sequencers
+# Used as a fallback when samplesinfo.csv is not available
+# =====================================================
+illumina_suffix_patterns:
+  - "_S[0-9]+_R[12]_001\\.fastq\\.gz$"           # Standard: _S123_R1_001.fastq.gz
+  - "_S[0-9]+_L[0-9]+_R[12]_001\\.fastq\\.gz$"  # With lane: _S123_L001_R1_001.fastq.gz
+  - "_R[12]_001\\.fastq\\.gz$"                   # Simple: _R1_001.fastq.gz
+  - "_R[12]\\.fastq\\.gz$"                       # Minimal: _R1.fastq.gz
+  - "_[12]\\.fastq\\.gz$"                        # Very simple: _1.fastq.gz
+
+resources:
+  # Default resources for lightweight operations
+  default:
+    threads: 1
+    mem: 1024  # 1 GB
+    walltime: 60  # 1 hour
+
+  # Quality control tools
+  nanoplot:
+    threads: 4
+    mem: 8192  # 8 GB
+    walltime: 480  # 8 hours
+  fastqc:
+    threads: 2
+    mem: 2048  # 2 GB
+    walltime: 120  # 2 hours
+  fastp:
+    threads: 4
+    mem: 4096  # 4 GB
+    walltime: 240  # 4 hours
+
+  # Read processing
+  porechop:
+    threads: 8
+    mem: 16384  # 16 GB
+    walltime: 720  # 12 hours
+  filtlong:
+    threads: 2
+    mem: 8192  # 8 GB
+    walltime: 480  # 8 hours
+
+  # Assembly tools
+  flye:
+    threads: 16
+    mem: 65536  # 64 GB
+    walltime: 1440  # 24 hours
+  spades:
+    threads: 16
+    mem: 65536  # 64 GB
+    walltime: 1440  # 24 hours
+  medaka:
+    threads: 8
+    mem: 16384  # 16 GB
+    walltime: 480  # 8 hours
+  pilon:
+    threads: 8
+    mem: 32768  # 32 GB
+    walltime: 480  # 8 hours
+  pypolca:
+    threads: 16
+    mem: 32768  # 32 GB
+    walltime: 480  # 8 hours
+
+  # Assembly evaluation
+  quast:
+    threads: 2
+    mem: 4096  # 4 GB
+    walltime: 120  # 2 hours
+  busco:
+    threads: 8
+    mem: 16384  # 16 GB
+    walltime: 480  # 8 hours
+  checkm2:
+    threads: 16
+    mem: 49152  # 48 GB
+    walltime: 240  # 4 hours
+
+  # Taxonomic classification
+  kraken2:
+    threads: 16
+    mem: 65536  # 64 GB
+    walltime: 720  # 12 hours
+
+  # Coverage and alignment
+  minimap2:
+    threads: 16
+    mem: 32768  # 32 GB
+    walltime: 480  # 8 hours
+  samtools:
+    threads: 4
+    mem: 8192  # 8 GB
+    walltime: 120  # 2 hours
+  mosdepth:
+    threads: 2
+    mem: 2048  # 2 GB
+    walltime: 120  # 2 hours
+
+  # Characterization tools
+  auriclass:
+    threads: 4
+    mem: 8192  # 8 GB
+    walltime: 120  # 2 hours
+  chroquetas:
+    threads: 8
+    mem: 16384  # 16 GB
+    walltime: 240  # 4 hours
+
+  # Triage Tree
+  fastani:
+    threads: 8
+    mem: 16384     # 16 GB
+    walltime: 240     # 4 hours
+  sourmash:
+    threads: 8
+    mem: 16384     # 16 GB
+    walltime: 240     # 4 hours
+  mash:
+    threads: 8
+    mem: 8192      # 8 GB
+    walltime: 120     # 2 hours
+  nucmer: # Optional, but very intensive if using all-vs-all
+    threads: 8
+    mem: 16384     # 16 GB
+    walltime: 1440    # 24 hours
+
+  # Phylogeny
+  funannotate_setup:
+    threads: 4
+    mem: 16384     # 16 GB
+    walltime: 1440    # 24 hours (download can be very long)
+  funannotate_predict: # Includes clean, mask, train, and predict
+    threads: 16
+    mem: 65536     # 64 GB
+    walltime: 2880    # 48 hours per genome
+  funannotate_iprscan: # The heaviest step
+    threads: 16
+    mem: 131072    # 128 GB (InterProScan is a RAM consumer)
+    walltime: 5760    # 96 hours (4 days) per genome
+  funannotate_annotate:
+    threads: 8
+    mem: 16384     # 16 GB
+    walltime: 480     # 8 hours per genome
+  
+  orthofinder:
+    threads: 32
+    mem: 131072    # 128 GB 
+    walltime: 5760    # 96 hours (4 days)
+  
+  iqtree:
+    threads: 24
+    mem: 32768     # 32 GB
+    walltime: 2880    # 48 hours
+
+  ete3: 
+    threads: 1
+    mem: 8192      # 8 GB
+    walltime: 60     # 1 hour
+
+  # Reporting
+  multiqc:
+    threads: 1
+    mem: 2048  # 2 GB
+    walltime: 120  # 2 hours
+
+  # Python scripts (lightweight)
+  python_script:
+    threads: 1
+    mem: 2048  # 2 GB
+    walltime: 60  # 1 hour
