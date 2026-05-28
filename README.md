@@ -3,6 +3,8 @@
 Nextflow DSL2 pipeline for *Candida* spp. surveillance — QC, identification,
 assembly, AMR, SNP calling and cohort phylogeny + CNV.
 
+![Pipeline overview](docs/pipeline_overview.svg)
+
 ## Quick start
 
 ```bash
