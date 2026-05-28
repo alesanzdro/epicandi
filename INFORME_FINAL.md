@@ -283,10 +283,116 @@ nextflow run . -profile test,conda --outdir results_smoke
 
 ### 5.3 Resultado de la ejecución
 
-> *Esta sección se completa tras la validación.  Ver `results_smoke/00_report/`
-> y `pipeline_info/execution_*.html` para timings + métricas.*
+```
+N E X T F L O W   ~  version 25.10.4
+Launching `./main.nf` [scruffy_fermi] DSL2 - revision: 42709d5bba
 
-(rellenado al final del run — ver §7)
+-[epicandi/epicandi] Pipeline completed successfully-
+Completed at: 28-May-2026 03:13:43
+Duration    : 50m 27s
+CPU hours   : 8.6
+Succeeded   : 32
+```
+
+✅ **32 / 32 tareas completadas, 0 fallos.**
+
+Listado de procesos ejecutados:
+
+| # | Proceso | Tiempo aproximado |
+|---|---|---|
+| 1 | SYLPH_PROFILE (taxonomía) | 30 s |
+| 2-3 | FASTQC × 2 (raw + clean) | 1 m |
+| 4 | FASTP (trimming) | 45 s |
+| 5 | AURICLASS (clade *C. auris*) | 1 m 30 s |
+| 6 | SPECIES_CALL | 3 s |
+| 7 | QC_GATE_SWF | 1 m 5 s |
+| 8 | SUBSAMPLE_ILLU | 1 m 5 s |
+| 9 | PREPARE_REFERENCE | 16 s |
+| 10 | BWAMEM2_MEM (alignment) | 1 m 54 s |
+| 11 | GATK4_MARKDUPLICATES | 1 m 54 s |
+| 12 | MOSDEPTH (CNV depth) | 8 s |
+| 13 | CNV_DETECT | 2 s |
+| 14 | CNVKIT_REFERENCE | (paralelo con MOSDEPTH) |
+| 15 | CNVKIT_BATCH (CNV calling) | 13 s |
+| 16 | COVERAGE_TRACKS | 6 s |
+| 17 | CNV_AGGREGATE / CNV_AMR_ATLAS / CNV_VISUALIZATION | < 1 s |
+| 18 | SPADES (assembly) | 14 m 30 s |
+| 19 | POLYPOLISH | 4 m 11 s |
+| 20 | PYPOLCA | 4 m 14 s |
+| 21 | ASM_FINALIZE | 9 s |
+| 22 | QUAST | 3 s |
+| 23 | BUSCO_BUSCO | ~13 m |
+| 24 | CHROQUETAS (AMR) | 8 s |
+| 25 | EXTRACT_GENE_PROTEINS | 8 s |
+| 26 | CHROQUETAS_JOIN | 18 s |
+| 27 | BUILD_MASTER_TABLE | 2 s |
+| 28 | PLOT_AMR_HEATMAP | 2 s |
+| 29 | GATK4_HAPLOTYPECALLER | **~42 min** (single bottleneck) |
+| 30 | MULTIQC | < 1 min |
+
+> **Cohort SNP + phylogeny saltados** (single sample, < `cohort_min_samples=3` con warn).
+
+> **Bottleneck identificado: GATK4 HaplotypeCaller** corrió en paralelo con
+> SPAdes + Polypolish + PyPolca + BUSCO, compitiendo por las 16 CPUs.
+> Con ploidía 1 y `--min-pruning 2 --min-dangling-branch-length 4`
+> (defaults conservadores GATK), HC necesita ~42 min en este sample.
+> Para un cohort real, los HC corren en paralelo entre samples y el
+> bottleneck efectivo es menor.
+
+### 5.4 Outputs principales generados
+
+```
+results_smoke/
+├── 00_report/                                              # ★ HTML report (generado post-run)
+│   ├── 260528_smoke_epicandi_report.html         (5.2 MB)
+│   ├── 260528_smoke_epicandi_report.xlsx
+│   ├── 260528_smoke_epicandi_report_fastq_qc_full.html
+│   └── 260528_smoke_epicandi_report_assembly_qc_full.html
+├── 01_qc/Cauris_01_smoke/                                  # FastQC + fastp
+│   └── fastp/*.html, *.json
+├── 03_identification/Cauris_01_smoke/                      # sylph + auriclass + species_call
+│   ├── *.sylph.tsv
+│   ├── *.auriclass.tsv
+│   └── *.species_call.tsv
+├── 04_assembly/Cauris_01_smoke/                            # SPAdes + Polypolish + PyPolca
+│   ├── spades/, polypolish/, pypolca/
+│   └── *.assembly.final.fasta
+├── 05_post_asm_qc/Cauris_01_smoke/                         # QUAST + BUSCO
+│   ├── quast/*.html
+│   └── busco/run_saccharomycetes_odb12/
+├── 06_amr/Cauris_01_smoke/                                 # ChroQueTaS + chroquetas_join
+│   ├── chroquetas/AMR_summary.txt
+│   └── *.resistance_report.tsv
+├── 07_snp/
+│   ├── bams/Cauris_01_smoke/*.dedup.bam[.bai]
+│   ├── gvcf/Cauris_01_smoke/*.g.vcf.gz[.tbi]
+│   └── refs/                                               # prepared refs (cache)
+├── 08_cnv/
+│   ├── Cauris_01_smoke/
+│   │   ├── *.cnv_events.tsv  (21 genes)
+│   │   ├── mosdepth/
+│   │   └── cnvkit/
+│   ├── _cnvkit_reference/
+│   ├── aggregated/                                         # 5 matrices cohort
+│   └── coverage_tracks/
+├── cohort/
+│   ├── master_table.tsv
+│   ├── call_matrix.tsv
+│   ├── amr_heatmap.png / .svg
+│   └── qc_flag.tsv
+├── multiqc/
+│   ├── multiqc_report.html
+│   ├── multiqc_data/
+│   └── multiqc_plots/
+└── pipeline_info/
+    ├── execution_report_2026-05-28_02-23-13.html           # Nextflow run report
+    ├── execution_timeline_2026-05-28_02-23-13.html
+    ├── execution_trace_2026-05-28_02-23-13.txt
+    ├── pipeline_dag_2026-05-28_02-23-13.html               # DAG visual
+    └── params_2026-05-28_02-23-23.json
+```
+
+**Tamaño**: `results_smoke/` = 3.3 GB (incluye BAMs y gVCFs).
 
 ---
 
@@ -341,6 +447,133 @@ test (ahorra ~30 min de conda solves).
 
 ---
 
-## 7. Validación
+## 7. Validación — resumen ejecutivo
 
-(Se completa al término del smoke test — placeholder)
+✅ **Pipeline funcional en el destino limpio** (`/almacenamiento/PIPELINES/epicandi`).
+
+| Métrica | Valor |
+|---|---|
+| Tareas ejecutadas | **32 / 32** ✅ |
+| Tareas con fallo | **0** ✅ |
+| Duración total | **50 m 27 s** ⚠ |
+| CPU hours | 8.6 |
+| Memoria max usada | ~37 GB (HC + GATK heap) |
+| Outputs generados | 9 directorios + report HTML + Excel + MultiQC |
+| HTML report verificado | ✅ `260528_smoke_epicandi_report.html` (5.2 MB) |
+| Refs leídas | ✅ desde `${projectDir}/resources/references/` (no rutas externas) |
+| AMR panel leído | ✅ desde `${projectDir}/assets/amr_db/` (no sibling repo) |
+| DBs externas usadas | ✅ sylph_db, busco_downloads (Heimdal default paths) |
+
+### 7.1 ⚠ Tiempo total > 30 min: por qué y cómo bajarlo
+
+El objetivo del briefing era < 30 min en Heimdal.  La ejecución tardó
+**50 m 27 s** porque `GATK4 HaplotypeCaller` (que es el bottleneck) corrió
+en paralelo con SPAdes + Polypolish + PyPolca + BUSCO, competiendo por
+las 16 CPUs.  Causas:
+
+- **HC en single-sample modo paralelo intra-task**: 2 cores
+  (`--native-pair-hmm-threads 2`), pero con el resto del pipeline
+  ocupando ~12 cores, el throughput baja.
+- **`--min-pruning 2 / --min-dangling-branch-length 4`** (defaults GATK
+  conservadores, más exhaustivos que `1, 1`).  Era una decisión
+  deliberada para reducir FPs; el coste es ~+15 % tiempo HC.
+- **BUSCO `saccharomycetes_odb12`** corre en paralelo y toma ~13 min.
+
+Mitigaciones posibles para futuras releases:
+
+1. **Subsamplear más agresivo para SNP-calling**: HC sobre ~50× en lugar
+   de ~100× → ~2× speedup.
+2. **`--min-pruning 1`** en perfil test (solo): pierde algo de FP control
+   pero baja HC ~25 %.
+3. **BUSCO `--cpu` aumentar**: hasta ~30 % ganancia.
+4. **Reordenar prioridad** en `conf/base.config` para que HC y BUSCO no
+   coexistan exactamente en el mismo timeslot.
+
+Para un cohort REAL (50+ samples), el bottleneck per-sample es similar
+pero la paralelización absorbe el coste.
+
+### 7.2 Verificaciones cumplidas del briefing
+
+- ✅ Repo limpio en `/almacenamiento/PIPELINES/epicandi/` (sin sufijo `-nf3`).
+- ✅ Origen `/home/asanzc/epicandi-nf3/` intacto (read-only durante todo el proceso).
+- ✅ Documentos de iteración previa (`issues/`, `test/`, `docs/gatk4/`, logs, results, work) descartados.
+- ✅ Auditoría del HTML report: scripts en `bin/`, sin rutas hardcoded en código (sí en docstrings, también limpiados).
+- ✅ Recursos propios reorganizados:
+  - `bin/` — 16 scripts Python propios
+  - `assets/` — schemas, MultiQC, NO_FILE placeholders, plus AMR DB (TSVs)
+  - `assets/amr_db/` — ★ integrado del sibling repo
+  - `resources/references/` — ★ 13 refs **copiadas físicamente** (215 MB)
+  - `resources/databases/fungamr/` — ★ FungAMR CSV copiado
+- ✅ BDs pesadas (sylph_db, busco_downloads) NO copiadas, documentadas en §6.
+- ✅ DSL2 + módulos por proceso + subworkflows en `subworkflows/local/`.
+- ✅ Profiles disponibles: `test`, `test_full`, `hpc`, `run96`, `conda`, `docker`, `singularity`, `apptainer`, `podman`, `wave`, `seqera_lab`.
+- ✅ Versionado: `manifest { name = 'epicandi/epicandi', version = '1.0.0dev' }`.
+- ✅ Test set en `assets/samplesheet.csv` (Illumina single sample, *C. auris* B11220).
+- ✅ Ejecución de validación:
+  ```
+  cd /almacenamiento/PIPELINES/epicandi
+  nextflow run . -profile test,conda --outdir results_smoke
+  ```
+  → completed successfully en 50m 27s.
+- ✅ HTML report (`260528_smoke_epicandi_report.html`) generado y verificado.
+- ✅ Outputs **NO referencian rutas externas** al directorio `results_smoke/`.
+
+### 7.3 Follow-ups (no bloquean esta release)
+
+| TODO | Prioridad | Notas |
+|---|---|---|
+| Wirear `GENERATE_REPORT` al final del workflow (auto-emitir HTML al terminar el run) | media | Hoy: invocación manual.  Ver §2.4. |
+| Crear samplesheet Nanopore para `-profile test_nanopore` | baja | Ver `assets/test_data/README.md`. |
+| Reducir tiempo del smoke test < 30 min | baja | Ver §7.1 mitigaciones. |
+| Crear org GitHub `epicandi` + push del repo | media | Una vez listo, `nextflow run epicandi/epicandi -r 1.0.0` funcionará globalmente. |
+| `nf-core lint .` cleanup | baja | 5 warnings aceptados, documentados en `docs/lint_warnings.md`. |
+
+---
+
+## 8. Comandos de referencia
+
+### 8.1 Smoke test (single sample, Illumina)
+
+```bash
+cd /almacenamiento/PIPELINES/epicandi
+nextflow run . -profile test,conda --outdir results_smoke
+```
+
+### 8.2 Resume (si re-corres con cambios)
+
+```bash
+nextflow run . -profile test,conda --outdir results_smoke -resume
+```
+
+### 8.3 Run de cohort real
+
+```bash
+nextflow run . -profile <conda|docker|singularity>,hpc \
+   --input my_samplesheet.csv \
+   --outdir results/ \
+   --sylph_db /path/to/epicandi.syldb \
+   --busco_downloads /path/to/busco_downloads/
+```
+
+### 8.4 Generar el HTML report manualmente (post-run)
+
+```bash
+python3 bin/generate_epicandi_report.py \
+    --results-dir results/ \
+    --run-name YYMMDD_MyRun \
+    --samplesheet my_samplesheet.csv \
+    --branding branding/ \
+    --output results/00_report/YYMMDD_MyRun_epicandi_report.html
+```
+
+### 8.5 Reusar conda envs ya solucionados (Heimdal)
+
+```bash
+export NXF_CONDA_CACHEDIR=/home/asanzc/epicandi-nf3/.conda
+# o (más simple):
+ln -s /home/asanzc/epicandi-nf3/.conda /almacenamiento/PIPELINES/epicandi/.conda
+```
+
+---
+
+**Fin del INFORME_FINAL.**
