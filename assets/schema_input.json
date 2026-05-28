@@ -1,0 +1,124 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/epicandi/epicandi/main/assets/schema_input.json",
+    "title": "epicandi/epicandi pipeline - params.input schema",
+    "description": "Schema for the samplesheet provided with params.input",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Sample id must be provided and cannot contain spaces",
+                "meta": [
+                    "id"
+                ]
+            },
+            "illumina_r1": {
+                "type": "string",
+                "pattern": "^(NA|.+\\.f(ast)?q\\.gz)$",
+                "errorMessage": "illumina_r1 must be 'NA' or a path ending in .fq.gz/.fastq.gz",
+                "anyOf": [
+                    {
+                        "format": "file-path",
+                        "exists": true,
+                        "pattern": "^.+\\.f(ast)?q\\.gz$"
+                    },
+                    {
+                        "const": "NA"
+                    }
+                ]
+            },
+            "illumina_r2": {
+                "type": "string",
+                "pattern": "^(NA|.+\\.f(ast)?q\\.gz)$",
+                "errorMessage": "illumina_r2 must be 'NA' or a path ending in .fq.gz/.fastq.gz",
+                "anyOf": [
+                    {
+                        "format": "file-path",
+                        "exists": true,
+                        "pattern": "^.+\\.f(ast)?q\\.gz$"
+                    },
+                    {
+                        "const": "NA"
+                    }
+                ]
+            },
+            "nanopore": {
+                "type": "string",
+                "pattern": "^(NA|.+\\.f(ast)?q\\.gz)$",
+                "errorMessage": "nanopore must be 'NA' or a path ending in .fq.gz/.fastq.gz",
+                "anyOf": [
+                    {
+                        "format": "file-path",
+                        "exists": true,
+                        "pattern": "^.+\\.f(ast)?q\\.gz$"
+                    },
+                    {
+                        "const": "NA"
+                    }
+                ]
+            },
+            "dorado_model": {
+                "type": "string",
+                "default": "NA",
+                "meta": [
+                    "dorado_model"
+                ],
+                "errorMessage": "dorado_model must be a Dorado basecalling model id (e.g. r1041_e82_400bps_sup_v5.2.0) or 'NA'"
+            },
+            "batch": {
+                "type": "string",
+                "default": "default_batch",
+                "meta": [
+                    "batch"
+                ],
+                "errorMessage": "batch is a free-text label used for cohort grouping"
+            },
+            "is_external": {
+                "type": "boolean",
+                "default": false,
+                "meta": [
+                    "is_external"
+                ],
+                "errorMessage": "is_external must be true or false"
+            },
+            "reference_tag": {
+                "type": "string",
+                "pattern": "^(NA|\\s*|[A-Za-z][A-Za-z0-9_]+)$",
+                "meta": [
+                    "reference_tag"
+                ],
+                "errorMessage": "reference_tag is required and must match a row in assets/references_manifest.tsv (e.g. CaurisII_B11220, Calbicans_SC5314)",
+                "description": "Reference tag from references_manifest.tsv. Leave blank/NA to auto-detect via IDENTIFICATION (sylph species_call). Manual value overrides auto-detect."
+            },
+            "ploidy_override": {
+                "type": [
+                    "integer",
+                    "string"
+                ],
+                "default": "NA",
+                "meta": [
+                    "ploidy_override"
+                ],
+                "errorMessage": "ploidy_override must be 1, 2, or 'NA' (defer to manifest)"
+            },
+            "clade": {
+                "type": "string",
+                "default": "NA",
+                "meta": [
+                    "clade"
+                ],
+                "errorMessage": "clade is 'I'..'VI' for C. auris samples, or 'NA' otherwise (auto-detected by AuriClass)"
+            }
+        },
+        "required": [
+            "id",
+            "illumina_r1",
+            "illumina_r2",
+            "nanopore",
+            "dorado_model"
+        ]
+    }
+}

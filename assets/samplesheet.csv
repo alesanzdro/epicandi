@@ -1,0 +1,2 @@
+id,illumina_r1,illumina_r2,nanopore,dorado_model,batch,is_external,reference_tag
+Cauris_01_smoke,/almacenamiento/asanzc/SRA_EXP_CANDIDA/03_fastq/Cauris_B11220/SRX26245890/SRR30847274_1.fastq.gz,/almacenamiento/asanzc/SRA_EXP_CANDIDA/03_fastq/Cauris_B11220/SRX26245890/SRR30847274_2.fastq.gz,NA,NA,smoke_standalone,false,CaurisII_B11220

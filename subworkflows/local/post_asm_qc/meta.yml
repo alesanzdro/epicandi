@@ -1,0 +1,32 @@
+name: "post_asm_qc"
+description: Post-assembly QC — QUAST (reference-aware via species_call.reference_slug) + BUSCO (saccharomycetes_odb12).
+keywords: [qc, quast, busco, assembly]
+components: [quast, busco/busco]
+input:
+  - ch_assembly:
+      type: channel
+      description: Final assembly [meta, fasta].
+  - ch_species_call:
+      type: channel
+      description: Per-sample species_call.tsv (for reference lookup).
+  - refs_dir:
+      type: file
+      description: Per-slug reference directory.
+  - busco_lineage:
+      type: string
+      description: BUSCO lineage name.
+  - busco_downloads:
+      type: file
+      description: BUSCO downloads cache (optional).
+output:
+  - quast_tsv:
+      type: channel
+      description: QUAST report TSV.
+  - busco_txt:
+      type: channel
+      description: BUSCO short summary TXT.
+  - busco_log:
+      type: channel
+      description: BUSCO log.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

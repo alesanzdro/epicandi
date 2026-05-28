@@ -1,0 +1,29 @@
+name: "subsample"
+description: Per-sample target-coverage subsampling with 1.1× hysteresis. Resolves genome size from manifest per species_call, emits subsampled reads + gsize_bp file.
+keywords: [subsample, coverage, seqtk, hysteresis]
+components: [subsample]
+input:
+  - ch_clean_illu:
+      type: channel
+      description: Cleaned Illumina pairs [meta, [R1, R2]].
+  - ch_clean_nano:
+      type: channel
+      description: Cleaned Nanopore reads [meta, clean.fq.gz].
+  - ch_species_call:
+      type: channel
+      description: Per-sample species_call.tsv (for genome size lookup).
+  - manifest:
+      type: file
+      description: ref_candida_info.tsv.
+output:
+  - sub_illu:
+      type: channel
+      description: Subsampled Illumina pairs [meta, [sub_R1, sub_R2]].
+  - sub_nano:
+      type: channel
+      description: Subsampled Nanopore reads [meta, sub_nano.fq.gz].
+  - gsize:
+      type: channel
+      description: "[sample.id, genome_size_bp.txt]"
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

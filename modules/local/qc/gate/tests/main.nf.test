@@ -1,0 +1,31 @@
+nextflow_process {
+
+    name "Test Process QC_GATE"
+    script "../main.nf"
+    process "QC_GATE"
+
+    tag "modules"
+    tag "modules_local"
+    tag "qc_gate"
+
+    test("stub — illumina-only") {
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id: 'sample_illu', assembly_type: 'illumina' ],
+                    file("${baseDir}/assets/NO_FILE_R1"),
+                    file("${baseDir}/assets/NO_FILE_R2"),
+                    file("${baseDir}/assets/NO_FILE_NANO")
+                ]
+                """
+            }
+        }
+        then {
+            assert process.success
+            assert path(process.out.flag_tsv[0][1]).exists()
+        }
+    }
+}

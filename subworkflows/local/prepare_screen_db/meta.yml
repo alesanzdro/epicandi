@@ -1,0 +1,20 @@
+name: "prepare_screen_db"
+description: Concatenate the 27-reference panel into screen.fa.gz with `${slug}__` headers, then build bowtie2 + minimap2 indices.
+keywords: [reference, index, bowtie2, minimap2, screen]
+components: [screen/fasta, bowtie2/build, minimap2/index]
+input:
+  - refs_dir:
+      type: file
+      description: Per-slug directory containing genome.fna.gz for each reference.
+output:
+  - fasta:
+      type: channel
+      description: Reheadered, concatenated panel FASTA [meta, screen.fa.gz].
+  - bt2:
+      type: channel
+      description: Bowtie2 index dir [meta, bowtie2/].
+  - mmi:
+      type: channel
+      description: minimap2 index file [meta, *.mmi].
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

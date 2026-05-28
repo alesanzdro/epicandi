@@ -1,0 +1,19 @@
+clinical_name	ncbi_taxid	ncbi_official	set	in_mardy	mardy_species_names	mardy_n_records	notes
+C. albicans	5476	Candida albicans	CORE	yes	Candida albicans	25039	Match limpio
+C. glabrata	5478	Nakaseomyces glabratus	CORE	yes	Nakaseomyces glabratus	2609	MARDy adoptó nomenclatura NCBI nueva
+C. parapsilosis	5480	Candida parapsilosis	CORE	yes	Candida parapsilosis	68	Match limpio
+C. tropicalis	5482	Candida tropicalis	CORE	yes	Candida tropicalis	160	Match limpio
+C. krusei	4909	Pichia kudriavzevii	CORE	yes	Candida krusei (42); Pichia kudriavzevii (15)	57	DIVIDIDA en dos nombres. MARDy tiene MÁS registros con el nombre clásico (Candida krusei). Aceptar ambos como sinónimos
+C. auris	498019	Candidozyma auris	CORE	yes	Candidozyma auris	797	MARDy adoptó nomenclatura nueva (Candidozyma)
+C. dubliniensis	42374	Candida dubliniensis	CORE	yes	Candida dubliniensis	92	Match limpio
+C. lusitaniae	36911	Clavispora lusitaniae	CORE	yes	Clavispora lusitaniae	13	Match limpio
+C. orthopsilosis	273371	Candida orthopsilosis	EXTENDED	yes	Candida orthopsilosis	14	Match limpio
+C. metapsilosis	273372	Candida metapsilosis	EXTENDED	yes	Candida metapsilosis	3	Match limpio
+C. guilliermondii	4929	Meyerozyma guilliermondii	EXTENDED	NO	—	0	HUÉRFANA en MARDy. Buscar en FungAMR/literatura
+C. haemulonii	45357	Candidozyma haemuli	EXTENDED	yes	Candida haemulonii	2	MARDy usa nomenclatura VIEJA (Candida), no la nueva (Candidozyma)
+C. duobushaemulonii	1231522	Candidozyma duobushaemuli	EXTENDED	NO	—	0	HUÉRFANA
+C. pseudohaemulonii	418784	[Candida] pseudohaemuli	EXTENDED	NO	—	0	HUÉRFANA
+C. nivariensis	418086	Nakaseomyces nivariensis	EXTENDED	NO	—	0	HUÉRFANA. Descrita en La Laguna (Tenerife) 2005
+C. fabianii	36022	Cyberlindnera fabianii	EXTENDED	NO	—	0	HUÉRFANA. Emergente
+C. kefyr	4911	Kluyveromyces marxianus	EXTENDED	yes	Kluyveromyces marxianus (18); Candida kefyr (13)	31	DIVIDIDA. Aceptar ambos como sinónimos
+C. famata	4959	Debaryomyces hansenii	EXTENDED	NO	—	0	HUÉRFANA

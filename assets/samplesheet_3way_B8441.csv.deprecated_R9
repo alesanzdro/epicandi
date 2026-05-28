@@ -1,0 +1,4 @@
+id,illumina_r1,illumina_r2,nanopore,dorado_model,batch,is_external,reference_tag
+B8441_illu,/almacenamiento/asanzc/Cauris_global/cladeI/reads/illumina/B8441_1.fastq.gz,/almacenamiento/asanzc/Cauris_global/cladeI/reads/illumina/B8441_2.fastq.gz,NA,NA,smoke_3way_B8441,true,
+B8441_nano,NA,NA,/almacenamiento/asanzc/Cauris_global/cladeI/reads/nanopore/B8441.fastq.gz,NA,smoke_3way_B8441,true,
+B8441_hybrid,/almacenamiento/asanzc/Cauris_global/cladeI/reads/illumina/B8441_1.fastq.gz,/almacenamiento/asanzc/Cauris_global/cladeI/reads/illumina/B8441_2.fastq.gz,/almacenamiento/asanzc/Cauris_global/cladeI/reads/nanopore/B8441.fastq.gz,NA,smoke_3way_B8441,true,

@@ -1,0 +1,24 @@
+# Nextflow runtime
+.nextflow/
+.nextflow.log*
+work/
+results*/
+.nf-test*
+.conda
+.conda_envs/
+
+# OS cruft
+.DS_Store
+._*
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/.history/
+
+# Temp
+*.tmp
+*.bak
+
+# Test outputs that shouldn't be committed
+assets/test_data/*.fastq.gz

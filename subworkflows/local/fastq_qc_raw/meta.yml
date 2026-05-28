@@ -1,0 +1,19 @@
+name: "fastq_qc_raw"
+description: QC of raw reads — FastQC on Illumina pairs, NanoPlot on Nanopore.
+keywords: [qc, fastqc, nanoplot, raw, illumina, nanopore]
+components: [fastqc, nanoplot]
+input:
+  - ch_samplesheet:
+      type: channel
+      description: |
+        Per-sample tuple [meta, illumina_r1, illumina_r2, nanopore] where the
+        path elements may be empty for absent platforms.
+output:
+  - fastqc_zip:
+      type: channel
+      description: FastQC archives (one per Illumina sample).
+  - nanoplot_txt:
+      type: channel
+      description: NanoPlot NanoStats.txt (one per Nanopore sample).
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

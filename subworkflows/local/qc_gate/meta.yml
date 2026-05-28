@@ -1,0 +1,26 @@
+name: "qc_gate"
+description: Join post-clean Illumina + Nanopore reads per sample, run QC_GATE (PASS/WARN/FAIL), branch the samplesheet accordingly.
+keywords: [qc, gate, threshold, pass, warn, fail]
+components: [qc/gate]
+input:
+  - ch_samplesheet:
+      type: channel
+      description: Original per-sample tuple [meta, r1, r2, nano].
+  - ch_clean_illu:
+      type: channel
+      description: Trimmed Illumina pairs [meta, [R1, R2]].
+  - ch_clean_nano:
+      type: channel
+      description: Cleaned Nanopore reads [meta, clean.fastq.gz].
+output:
+  - samplesheet_pass:
+      type: channel
+      description: Subset of ch_samplesheet for samples whose qc_flag is not FAIL.
+  - flag_tsv:
+      type: channel
+      description: Per-sample qc_flag.tsv emitted by QC_GATE.
+  - failed_meta:
+      type: channel
+      description: Meta of samples flagged FAIL (for reporting/skipping).
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

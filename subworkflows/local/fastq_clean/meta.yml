@@ -1,0 +1,26 @@
+name: "fastq_clean"
+description: Clean raw reads — fastp on Illumina, porechop_abi + chopper on Nanopore.
+keywords: [clean, fastp, porechop, chopper, trim]
+components: [fastp, porechop/abi, chopper]
+input:
+  - ch_samplesheet:
+      type: channel
+      description: Per-sample tuple [meta, illumina_r1, illumina_r2, nanopore].
+output:
+  - clean_illu:
+      type: channel
+      description: Trimmed Illumina pairs [meta, [R1, R2]].
+  - clean_nano:
+      type: channel
+      description: Cleaned Nanopore reads [meta, clean.fastq.gz].
+  - fastp_json:
+      type: channel
+      description: fastp JSON report (MultiQC input).
+  - fastp_log:
+      type: channel
+      description: fastp log.
+  - porechop_log:
+      type: channel
+      description: porechop_abi log.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

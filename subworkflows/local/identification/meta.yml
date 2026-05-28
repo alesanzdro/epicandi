@@ -1,0 +1,35 @@
+name: "identification"
+description: Sample identification — Sylph profile + read screen (bowtie2/minimap2) + AuriClass + species_call_v2 join.
+keywords: [identification, taxonomy, sylph, auriclass, species_call, candida]
+components: [sylph/profile, bowtie2/align, minimap2/align, seqkit/sample, screen/tally, auriclass, species/call, prepare_screen_db]
+input:
+  - ch_samplesheet:
+      type: channel
+      description: Per-sample tuple [meta, r1, r2, nano] (QC-passed).
+  - ch_clean_illu:
+      type: channel
+      description: Trimmed Illumina pairs [meta, [R1, R2]].
+  - ch_clean_nano:
+      type: channel
+      description: Cleaned Nanopore reads [meta, clean.fastq.gz].
+  - sylph_db:
+      type: file
+      description: Pre-built Sylph genome sketch database (epicandi.syldb).
+  - refs_dir:
+      type: file
+      description: Per-slug reference directory; consulted only if screen indices are not preset.
+  - manifest:
+      type: file
+      description: ref_candida_info.tsv (species metadata table).
+output:
+  - sylph_profile:
+      type: channel
+      description: Per-sample Sylph profile TSV.
+  - species_call:
+      type: channel
+      description: Per-sample species_call.tsv (one summary row).
+  - auriclass:
+      type: channel
+      description: Per-Illumina-sample AuriClass clade TSV.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

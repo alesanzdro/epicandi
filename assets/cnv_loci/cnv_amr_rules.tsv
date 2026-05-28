@@ -1,0 +1,17 @@
+gene	event	drug	modulation	source	evidence	notes
+CDR1	deletion	itraconazole	override_to_S	Rybak_2019	PMID:31408315	Deletion of CDR1 paradoxically restores itraconazole susceptibility (CNV negativa beneficiosa). Override the AMR call to S regardless of SNP-based call.
+CDR1	deletion_total	itraconazole	override_to_S	Rybak_2019	PMID:31408315	Same as deletion but stronger evidence (norm depth <0.1).
+ERG11	amplification	fluconazole	reinforce_R	Burrack_2022;Williamson_2022	PMID:35073181;PMID:35471175	10-15× ERG11 copies → high-level fluconazole R. Reinforces the SNP call if R, escalates from S/I to R if SNP-only said S/I.
+ERG11	dup_high	fluconazole	reinforce_R	Carolus_2021	PMID:33707344	3-5× ERG11 (score+7 in FungAMR). Co-occurs with TAC1B dup in Carolus signature.
+ERG11	dup_low	fluconazole	flag_for_review	Carolus_2021	PMID:33707344	1.5-3× ERG11 alone is marginal; flag for clinical review rather than override.
+Chr5_full	aneuploidy_2x	fluconazole	reinforce_R	Li_2024;Bing_2020	PMID:38394128;PMID:33199526	Chr5x2 = whole-chromosome duplication amplifies ERG11+TAC1B in one event. Detectable only via scan-by-contig.
+FKS1	deletion	echinocandins	override_to_R	Carolus_2021	PMID:33707344	FKS1 deletion or F635del with copy gain is the recurrent echinocandin-R mechanism in clade I.
+FKS1	deletion_total	echinocandins	override_to_R	Carolus_2021	PMID:33707344	Stronger evidence than partial deletion.
+TAC1B	dup_high	fluconazole	reinforce_R	Carolus_2021;Rybak_2020	PMID:33707344;PMID:32616692	TAC1B amplification upregulates CDR1 (efflux). Co-amplifies with ERG11 in Chr5 segmental dup.
+TAC1B	amplification	fluconazole	reinforce_R	Carolus_2021	PMID:33707344	Same direction, stronger signal.
+ERG3	deletion	amphotericin_b	override_to_R	Carolus_2023	PMID:37348795	Knockout/loss-of-function in ERG3 → ergosta-7,22-dien-3β-ol accumulation → AmpB R (sterol-pathway switch).
+ERG3	deletion_total	amphotericin_b	override_to_R	Carolus_2023	PMID:37348795	Same.
+ERG6	deletion	amphotericin_b	override_to_R	Carolus_2023	PMID:37348795	Knockout alters sterol composition; same AmpB R mechanism as ERG3.
+ERG6	deletion_total	amphotericin_b	override_to_R	Carolus_2023	PMID:37348795	Same.
+NCP1	deletion	amphotericin_b	override_to_R	Carolus_2023	PMID:37348795	Cytochrome P450 reductase knockout → AmpB R.
+NCP1	deletion_total	amphotericin_b	override_to_R	Carolus_2023	PMID:37348795	Same.

@@ -1,0 +1,23 @@
+name: "assembly_long"
+description: Nanopore-only assembly route — FLYE → MEDAKA → ASM_FINALIZE.
+keywords: [assembly, nanopore, flye, medaka, finalize]
+components: [flye, medaka, asm/finalize]
+input:
+  - ch_sub_nano:
+      type: channel
+      description: Subsampled Nanopore reads [meta, sub_nano.fq.gz].
+  - ch_gsize:
+      type: channel
+      description: Genome size in bp per sample.
+output:
+  - assembly:
+      type: channel
+      description: Final assembly [meta, ${id}.fasta].
+  - finalize:
+      type: channel
+      description: Finalize summary TSV.
+  - flye_log:
+      type: channel
+      description: Flye log file.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

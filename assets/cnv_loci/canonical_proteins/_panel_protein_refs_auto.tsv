@@ -1,0 +1,22 @@
+gene	protein_accession	length_aa	description	match_method	fasta_path	n_isoforms_in_fa
+ERG11	XP_028891800.2	524	sterol 14-demethylase	keyword:sterol\s+14[\-\s]*(?:alpha[\-\...	assets/cnv_loci/canonical_proteins/ERG11.faa	1
+FKS1	XP_028893355.2	1888	1,3-beta-glucan synthase	keyword:1[,\s]*3[\-\s]*beta[\-\s]*gluc...	assets/cnv_loci/canonical_proteins/FKS1.faa	1
+CDR1	XP_028891589.2	1469	pleiotropic drug resistance family ABC transporter	keyword:pleiotropic\s+drug\s+resistanc...	assets/cnv_loci/canonical_proteins/CDR1.faa	1
+ERG3	XP_028891029.1	363	C-5 sterol desaturase	keyword:c[\-\s]*5\s+sterol\s+desaturas...	assets/cnv_loci/canonical_proteins/ERG3.faa	1
+ERG6	XP_028890162.1	462	delta(24(24(1)))-sterol reductase	keyword:delta.*24.*sterol	assets/cnv_loci/canonical_proteins/ERG6.faa	1
+NCP1	XP_028888218.1	282	porin POR1	alias_in_desc:POR1	assets/cnv_loci/canonical_proteins/NCP1.faa	1
+HMG1	XP_028890531.2	1019	hydroxymethylglutaryl-CoA reductase (NADPH) HMG1	exact_in_desc	assets/cnv_loci/canonical_proteins/HMG1.faa	1
+UPC2	XP_028892667.1	617	Upc2p	exact_in_desc	assets/cnv_loci/canonical_proteins/UPC2.faa	1
+MRR1	XP_028888235.1	949	Mrr2p	alias_in_desc:MRR2	assets/cnv_loci/canonical_proteins/MRR1.faa	1
+ERG2	XP_028888031.1	218	C-8 sterol isomerase ERG2	exact_in_desc	assets/cnv_loci/canonical_proteins/ERG2.faa	1
+FUR1	XP_028889687.2	219	orotate phosphoribosyltransferase URA10	alias_in_desc:URA10	assets/cnv_loci/canonical_proteins/FUR1.faa	1
+FCY1	XP_028888467.1	150	cytosine deaminase	keyword:cytosine\s+deaminase	assets/cnv_loci/canonical_proteins/FCY1.faa	1
+CIS2	XP_028889376.2	586	Ecm38p	alias_in_desc:ECM38	assets/cnv_loci/canonical_proteins/CIS2.faa	1
+PEA2	XP_028891891.2	540	Pea2p	exact_in_desc	assets/cnv_loci/canonical_proteins/PEA2.faa	1
+MEC3	XP_028890414.1	320	Mec3p	exact_in_desc	assets/cnv_loci/canonical_proteins/MEC3.faa	1
+FLO8	XP_028892793.2	821	Flo8p	exact_in_desc	assets/cnv_loci/canonical_proteins/FLO8.faa	1
+ADE17	XP_028889775.1	589	bifunctional phosphoribosylaminoimidazolecarboxamide formyltransferase/IMP cyclohydrolase	keyword:phosphoribosylaminoimidazoleca...	assets/cnv_loci/canonical_proteins/ADE17.faa	1
+TAC1B	KAK8439229.1	868	hypothetical protein B9J08_004820 (B8441 GenBank fallback)	locus_tag_panel_tsv	assets/cnv_loci/canonical_proteins/TAC1B.faa	1
+ALS4	KAK8438519.1	1795	hypothetical protein B9J08_004112 (B8441 GenBank fallback)	locus_tag_panel_tsv	assets/cnv_loci/canonical_proteins/ALS4.faa	1
+SCF1	KAK8440136.1	300	hypothetical protein B9J08_002161 (B8441 GenBank fallback)	locus_tag_panel_tsv	assets/cnv_loci/canonical_proteins/SCF1.faa	1
+SIT1	KAK8441709.1	617	hypothetical protein B9J08_001550 (B8441 GenBank fallback)	locus_tag_panel_tsv	assets/cnv_loci/canonical_proteins/SIT1.faa	1

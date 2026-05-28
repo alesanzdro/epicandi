@@ -1,0 +1,216 @@
+gene	mutation_id	mutation_type	ref_aa	position	mut_aa	drugs	confidence_score	evidence_strength	n_reports	pmids	companion_mutations	tier	in_panel
+ADE17	M1_K33del	Indel	M	1	del_K33	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;S70R;V704L	2	true
+ADE17	G45V	SNP	G	45	V	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;K143R;M1_K33del;S70R;V704L	2	true
+ADE17	S70R	SNP	S	70	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;M1_K33del;V704L	2	true
+ADE17	K143R	SNP	K	143	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;M1_K33del;S70R;V704L	2	true
+ADE17	F635C	SNP	F	635	C	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	G45V;K143R;M1_K33del;S70R;V704L	2	true
+ADE17	V704L	SNP	V	704	L	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;M1_K33del;S70R	2	true
+CDR1	M1_K33del	Indel	M	1	del_K33	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;S70R;V704L	1	true
+CDR1	G45V	SNP	G	45	V	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;K143R;M1_K33del;S70R;V704L	1	true
+CDR1	S70R	SNP	S	70	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	69	35770999	D642Y;F635C;G45V;K143R;M128fs;M1_K33del;S639P;S639Y;S84L;V119L;V704L	1	true
+CDR1	S84L	SNP	S	84	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V704L	1	true
+CDR1	V119L	SNP	V	119	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V704L	1	true
+CDR1	M128fs	Indel	M	128	fs	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V119L;V704L	1	true
+CDR1	K143R	SNP	K	143	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	69	35770999	D642Y;F635C;G45V;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L;V704L	1	true
+CDR1	F635C	SNP	F	635	C	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	36	35770999	G45V;K143R;M128fs;M1_K33del;S70R;S84L;V119L;V704L	1	true
+CDR1	S639P	SNP	S	639	P	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	1	true
+CDR1	S639Y	SNP	S	639	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	1	true
+CDR1	D642Y	SNP	D	642	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	1	true
+CDR1	V704L	SNP	V	704	L	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	69	35770999	D642Y;F635C;G45V;K143R;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L	1	true
+CDR1	Deletion	CNV			Deletion	itraconazole	-5.0	S-weak	1	30718246		1	true
+CHR5	Chr5x2	CNV			Chr5x2	fluconazole;voriconazole	4.0	R-strong	4	39480072			false
+CHRV	ChrVx2	CNV			ChrVx2	fluconazole	4.0	R-strong	1	33077664			false
+CIS2	A27T	SNP	A	27	T	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	D367V;Duplication;F191del;F635del	2	true
+CIS2	F191del	Indel	F	191	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	A27T;D367V;Duplication;F635del	2	true
+CIS2	D367V	SNP	D	367	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;Duplication;F191del;F635del	2	true
+CIS2	F635del	Indel	F	635	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	A27T;D367V;Duplication;F191del	2	true
+CIS2	Duplication	CNV			Duplication	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	A27T;D367V;F191del;F635del	2	true
+CRCB	S70R	SNP	S	70	R	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;V119L;V704L		false
+CRCB	V119L	SNP	V	119	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V704L		false
+CRCB	M128fs	Indel	M	128	fs	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V119L;V704L		false
+CRCB	K143R	SNP	K	143	R	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;M128fs;S70R;V119L;V704L		false
+CRCB	F635C	SNP	F	635	C	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	K143R;M128fs;S70R;V119L;V704L		false
+CRCB	V704L	SNP	V	704	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V119L		false
+DHPS	G54W	SNP	G	54	W	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	I440V;M220L;S70R;T55A;Y132F		false
+DHPS	T55A	SNP	T	55	A	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;M220L;S70R;Y132F		false
+DHPS	S70R	SNP	S	70	R	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;M220L;T55A;Y132F		false
+DHPS	Y132F	SNP	Y	132	F	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;M220L;S70R;T55A		false
+DHPS	M220L	SNP	M	220	L	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;S70R;T55A;Y132F		false
+DHPS	I440V	SNP	I	440	V	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;M220L;S70R;T55A;Y132F		false
+ERG10	T244N	SNP	T	244	N	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	1.0	R-strong	10	10.21203/rs.3.rs-3621420/v1;39472696			false
+ERG11	M1_K33del	Indel	M	1	del_K33	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;S70R;V704L	1	true
+ERG11	A27T	SNP	A	27	T	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	D367V;Duplication;F191del;F635del	1	true
+ERG11	G45V	SNP	G	45	V	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;K143R;M1_K33del;S70R;V704L	1	true
+ERG11	G54W	SNP	G	54	W	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	I440V;M220L;S70R;T55A;Y132F	1	true
+ERG11	T55A	SNP	T	55	A	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;M220L;S70R;Y132F	1	true
+ERG11	S70R	SNP	S	70	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	74	35770999;38557967	D642Y;F635C;G45V;G54W;I440V;K143R;M128fs;M1_K33del;M220L;S639P;S639Y;S84L;T55A;V119L;V704L;Y132F	1	true
+ERG11	S84L	SNP	S	84	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V704L	1	true
+ERG11	G108X	SNP	G	108	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696	T369M	1	true
+ERG11	V119L	SNP	V	119	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V704L	1	true
+ERG11	V125A	SNP	V	125	A	fluconazole;itraconazole;posaconazole;voriconazole	2.0	R-strong	12	34633842	F126L	1	true
+ERG11	F126L	SNP	F	126	L	fluconazole;itraconazole;posaconazole;voriconazole	2.0	R-strong	12	34633842	V125A	1	true
+ERG11	F126T	SNP	F	126	T	fluconazole	8.0	R-weak	1	27988485		1	true
+ERG11	M128fs	Indel	M	128	fs	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V119L;V704L	1	true
+ERG11	Y132F	SNP	Y	132	F	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	2.0	R-strong	226	27988485;29593275;30082281;34060660;34915074;35862787;37026059;37222986;38557967	A583S;F211I;G54W;I440V;K143R;M220L;S652Y;S70R;T55A	1	true
+ERG11	K143R	SNP	K	143	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	2.0	R-strong	76	27988485;30082281;34060660;35770999;35862787	D642Y;F635C;G45V;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L;V704L;Y132F	1	true
+ERG11	E165X	SNP	E	165	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696	T308M	1	true
+ERG11	K177R	SNP	K	177	R	fluconazole;voriconazole	-2.0	S-strong	2	30082281	E343D;N335S	1	true
+ERG11	W182X	SNP	W	182	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	15	33820824;39472696	A272V;E429X;Q384X	1	true
+ERG11	F191del	Indel	F	191	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	8	33820824	A27T;D367V;Duplication;F635del	1	true
+ERG11	F211I	SNP	F	211	I	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	29593275	S652Y;Y132F	1	true
+ERG11	M220L	SNP	M	220	L	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;S70R;T55A;Y132F	1	true
+ERG11	D225N	SNP	D	225	N	amphotericin_b	1.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG11	A272V	SNP	A	272	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	E429X;Q384X;W182X	1	true
+ERG11	M306I	SNP	M	306	I	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	1.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+ERG11	T308M	SNP	T	308	M	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696	E165X	1	true
+ERG11	N335S	SNP	N	335	S	fluconazole;voriconazole	-2.0	S-strong	2	30082281	E343D;K177R	1	true
+ERG11	E343D	SNP	E	343	D	fluconazole;voriconazole	-2.0	S-strong	2	30082281	K177R;N335S	1	true
+ERG11	D367V	SNP	D	367	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;Duplication;F191del;F635del	1	true
+ERG11	T369M	SNP	T	369	M	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696	G108X	1	true
+ERG11	Q384X	SNP	Q	384	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A272V;E429X;W182X	1	true
+ERG11	E429X	SNP	E	429	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	15	33820824;39472696	A272V;Q384X;W182X	1	true
+ERG11	I440V	SNP	I	440	V	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;M220L;S70R;T55A;Y132F	1	true
+ERG11	I466M	SNP	I	466	M	fluconazole;voriconazole	8.0	R-weak	4	30082281		1	true
+ERG11	Y501H	SNP	Y	501	H	fluconazole;voriconazole	8.0	R-weak	4	30082281		1	true
+ERG11	M504I	SNP	M	504	I	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696		1	true
+ERG11	A583S	SNP	A	583	S	fluconazole	8.0	R-weak	1	34915074	Y132F	1	true
+ERG11	F635C	SNP	F	635	C	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	36	35770999	G45V;K143R;M128fs;M1_K33del;S70R;S84L;V119L;V704L	1	true
+ERG11	F635del	Indel	F	635	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	A27T;D367V;Duplication;F191del	1	true
+ERG11	S639P	SNP	S	639	P	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	1	true
+ERG11	S639Y	SNP	S	639	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	1	true
+ERG11	D642Y	SNP	D	642	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	1	true
+ERG11	S652Y	SNP	S	652	Y	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	29593275	F211I;Y132F	1	true
+ERG11	V704L	SNP	V	704	L	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	69	35770999	D642Y;F635C;G45V;K143R;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L	1	true
+ERG11	Duplication	CNV			Duplication	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	8	33820824	A27T;D367V;F191del;F635del	1	true
+ERG12	E18Q	SNP	E	18	Q	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696			false
+ERG3	G108X	SNP	G	108	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696	T369M	1	true
+ERG3	E165X	SNP	E	165	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696	T308M	1	true
+ERG3	W182X	SNP	W	182	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	15	33820824;39472696	A272V;E429X;Q384X	1	true
+ERG3	L207I	SNP	L	207	I	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	6	33820824	Duplication;F635del;M690I	1	true
+ERG3	P228Q	SNP	P	228	Q	amphotericin_b	4.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG3	A272V	SNP	A	272	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	E429X;Q384X;W182X	1	true
+ERG3	T308M	SNP	T	308	M	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696	E165X	1	true
+ERG3	T369M	SNP	T	369	M	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696	G108X	1	true
+ERG3	Q384X	SNP	Q	384	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A272V;E429X;W182X	1	true
+ERG3	E429X	SNP	E	429	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	15	33820824;39472696	A272V;Q384X;W182X	1	true
+ERG3	F635del	Indel	F	635	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	6	33820824	Duplication;L207I;M690I	1	true
+ERG3	M690I	SNP	M	690	I	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	6	33820824	Duplication;F635del;L207I	1	true
+ERG3	Duplication	CNV			Duplication	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	F635del;L207I;M690I	1	true
+ERG3	Knockout	CNV			Knockout	amphotericin_b	1.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG6	D62fs	Indel	D	62	fs	amphotericin_b	4.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG6	Y77C	SNP	Y	77	C	amphotericin_b	4.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG6	E86fs	Indel	E	86	fs	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+ERG6	R97fs	Indel	R	97	fs	amphotericin_b	1.0	R-strong	1	34915074		1	true
+ERG6	R100fs	Indel	R	100	fs	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696		1	true
+ERG6	G131S	SNP	G	131	S	amphotericin_b	4.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG6	Y177X	SNP	Y	177	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+ERG6	K234_D236del	Indel	K	234	del_D236	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+ERG6	S238X	SNP	S	238	X	amphotericin_b	4.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG6	F311fs	Indel	F	311	fs	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696		1	true
+ERG6	R318I	SNP	R	318	I	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+ERG6	E329X	SNP	E	329	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+ERG6	V369E	SNP	V	369	E	amphotericin_b	4.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+ERG6	Knockout	CNV			Knockout	amphotericin_b	1.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+FCY1	M1_K33del	Indel	M	1	del_K33	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;S70R;V704L	2	true
+FCY1	G45V	SNP	G	45	V	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;K143R;M1_K33del;S70R;V704L	2	true
+FCY1	G54W	SNP	G	54	W	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	I440V;M220L;S70R;T55A;Y132F	2	true
+FCY1	T55A	SNP	T	55	A	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;M220L;S70R;Y132F	2	true
+FCY1	S70R	SNP	S	70	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	74	35770999;38557967	D642Y;F635C;G45V;G54W;I440V;K143R;M128fs;M1_K33del;M220L;S639P;S639Y;S84L;T55A;V119L;V704L;Y132F	2	true
+FCY1	S84L	SNP	S	84	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V704L	2	true
+FCY1	V119L	SNP	V	119	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V704L	2	true
+FCY1	M128fs	Indel	M	128	fs	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V119L;V704L	2	true
+FCY1	Y132F	SNP	Y	132	F	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;M220L;S70R;T55A	2	true
+FCY1	K143R	SNP	K	143	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	69	35770999	D642Y;F635C;G45V;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L;V704L	2	true
+FCY1	M220L	SNP	M	220	L	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;I440V;S70R;T55A;Y132F	2	true
+FCY1	I440V	SNP	I	440	V	5-fluorocytosine;fluconazole;itraconazole;posaconazole;voriconazole	8.0	R-weak	5	38557967	G54W;M220L;S70R;T55A;Y132F	2	true
+FCY1	F635C	SNP	F	635	C	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	36	35770999	G45V;K143R;M128fs;M1_K33del;S70R;S84L;V119L;V704L	2	true
+FCY1	S639P	SNP	S	639	P	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	2	true
+FCY1	S639Y	SNP	S	639	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	2	true
+FCY1	D642Y	SNP	D	642	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	8	35770999	K143R;S70R;V704L	2	true
+FCY1	V704L	SNP	V	704	L	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	69	35770999	D642Y;F635C;G45V;K143R;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L	2	true
+FCY2	S70R	SNP	S	70	R	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;V119L;V704L		false
+FCY2	V119L	SNP	V	119	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V704L		false
+FCY2	M128fs	Indel	M	128	fs	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V119L;V704L		false
+FCY2	K143R	SNP	K	143	R	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;M128fs;S70R;V119L;V704L		false
+FCY2	F635C	SNP	F	635	C	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	K143R;M128fs;S70R;V119L;V704L		false
+FCY2	V704L	SNP	V	704	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V119L		false
+FKS1	M1_K33del	Indel	M	1	del_K33	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;S70R;V704L	1	true
+FKS1	A27T	SNP	A	27	T	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	D367V;Duplication;F191del;F635del	1	true
+FKS1	G45V	SNP	G	45	V	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;K143R;M1_K33del;S70R;V704L	1	true
+FKS1	S70R	SNP	S	70	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	60	35770999	D642Y;F635C;G45V;K143R;M128fs;M1_K33del;S639P;S639Y;S84L;V119L;V704L	1	true
+FKS1	S84L	SNP	S	84	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V704L	1	true
+FKS1	V119L	SNP	V	119	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;M128fs;S70R;V704L	1	true
+FKS1	M128fs	Indel	M	128	fs	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V119L;V704L	1	true
+FKS1	Y132F	SNP	Y	132	F	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	29593275	F211I;S652Y	1	true
+FKS1	K143R	SNP	K	143	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	60	35770999	D642Y;F635C;G45V;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L;V704L	1	true
+FKS1	F191del	Indel	F	191	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	A27T;D367V;Duplication;F635del	1	true
+FKS1	L207I	SNP	L	207	I	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	6	33820824	Duplication;F635del;M690I	1	true
+FKS1	F211I	SNP	F	211	I	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	29593275	S652Y;Y132F	1	true
+FKS1	D367V	SNP	D	367	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;Duplication;F191del;F635del	1	true
+FKS1	F635C	SNP	F	635	C	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	39	35770999;36975998	G45V;K143R;M128fs;M1_K33del;S70R;S84L;V119L;V704L	1	true
+FKS1	F635S	SNP	F	635	S	anidulafungin;caspofungin;micafungin	-8.0	S-weak	3	36975998		1	true
+FKS1	F635Y	SNP	F	635	Y	anidulafungin;caspofungin;micafungin	8.0	R-weak	3	36975998		1	true
+FKS1	F635del	Indel	F	635	del	amphotericin_b;anidulafungin;caspofungin;fluconazole;micafungin	7.0	R-weak	16	33820824;36975998	A27T;D367V;Duplication;F191del;L207I;M690I	1	true
+FKS1	S639F	SNP	S	639	F	anidulafungin;caspofungin;micafungin	8.0	R-weak	16	29325167;29632013;34060660;36920237;36975998		1	true
+FKS1	S639P	SNP	S	639	P	anidulafungin;caspofungin;cd101;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	4.0	R-strong	19	29307565;31281859;35770999;35862787;36975998	K143R;S70R;V704L	1	true
+FKS1	S639Y	SNP	S	639	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	7.0	R-weak	17	35770999;36920237;36975998	K143R;S70R;V704L	1	true
+FKS1	D642H	SNP	D	642	H	anidulafungin;caspofungin;micafungin	-8.0	S-weak	3	36975998	R645T	1	true
+FKS1	D642Y	SNP	D	642	Y	anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	11	35770999;36920237	K143R;S70R;V704L	1	true
+FKS1	R645T	SNP	R	645	T	anidulafungin;caspofungin;micafungin	-8.0	S-weak	3	36975998	D642H	1	true
+FKS1	S652Y	SNP	S	652	Y	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	29593275	F211I;Y132F	1	true
+FKS1	M690I	SNP	M	690	I	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	7	33820824	Duplication;F635del;L207I	1	true
+FKS1	W691L	SNP	W	691	L	anidulafungin;caspofungin;micafungin	1.0	R-strong	9	37222585		1	true
+FKS1	V704L	SNP	V	704	L	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	60	35770999	D642Y;F635C;G45V;K143R;M128fs;M1_K33del;S639P;S639Y;S70R;S84L;V119L	1	true
+FKS1	R1354H	SNP	R	1354	H	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	1.0	R-strong	18	36920237;37233240		1	true
+FKS1	R1354Y	SNP	R	1354	Y	anidulafungin;caspofungin;micafungin	8.0	R-weak	3	36920237		1	true
+FKS1	Duplication	CNV			Duplication	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	8	33820824	A27T;D367V;F191del;F635del;L207I;M690I	1	true
+FLO8	W182X	SNP	W	182	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A272V;E429X;Q384X	2	true
+FLO8	A272V	SNP	A	272	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	E429X;Q384X;W182X	2	true
+FLO8	Q384X	SNP	Q	384	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A272V;E429X;W182X	2	true
+FLO8	E429X	SNP	E	429	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A272V;Q384X;W182X	2	true
+FUR1	M1_K33del	Indel	M	1	del_K33	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;G45V;K143R;S70R;V704L	2	true
+FUR1	G45V	SNP	G	45	V	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	10	35770999	F635C;K143R;M1_K33del;S70R;V704L	2	true
+FUR1	S70R	SNP	S	70	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	19	35770999	F635C;G45V;K143R;M1_K33del;S84L;V704L	2	true
+FUR1	S84L	SNP	S	84	L	5-fluorocytosine;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	35770999	F635C;K143R;S70R;V704L	2	true
+FUR1	Y132F	SNP	Y	132	F	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	29593275	F211I;S652Y	2	true
+FUR1	K143R	SNP	K	143	R	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	19	35770999	F635C;G45V;M1_K33del;S70R;S84L;V704L	2	true
+FUR1	F211I	SNP	F	211	I	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	7.0	R-weak	10	29593275	S652Y;Y132F	2	true
+FUR1	F635C	SNP	F	635	C	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	19	35770999	G45V;K143R;M1_K33del;S70R;S84L;V704L	2	true
+FUR1	S652Y	SNP	S	652	Y	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	9	29593275	F211I;Y132F	2	true
+FUR1	V704L	SNP	V	704	L	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;isavuconazole;itraconazole;micafungin;posaconazole;voriconazole	8.0	R-weak	19	35770999	F635C;G45V;K143R;M1_K33del;S70R;S84L	2	true
+HMG1	R983S	SNP	R	983	S	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	1.0	R-strong	10	10.21203/rs.3.rs-3621420/v1;39472696		2	true
+MEC3	W182X	SNP	W	182	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	A272V;E429X;Q384X	2	true
+MEC3	A272V	SNP	A	272	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	E429X;Q384X;W182X	2	true
+MEC3	Q384X	SNP	Q	384	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A272V;E429X;W182X	2	true
+MEC3	E429X	SNP	E	429	X	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	A272V;Q384X;W182X	2	true
+MRS7	D293H	SNP	D	293	H	fluconazole;voriconazole	1.0	R-strong	4	39480072			false
+MUB1	Y765X	SNP	Y	765	X	fluconazole;voriconazole	1.0	R-strong	4	39480072			false
+NCP1	Q368X	SNP	Q	368	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+NCP1	T451fs	Indel	T	451	fs	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+NCP1	Q587X	SNP	Q	587	X	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	9	10.21203/rs.3.rs-3621420/v1;39472696		1	true
+NCP1	Knockout	CNV			Knockout	amphotericin_b	1.0	R-strong	1	10.21203/rs.3.rs-3621420/v1		1	true
+NCP1	Translocation	Other			Translocation	5-fluorocytosine;amphotericin_b;anidulafungin;caspofungin;fluconazole;geldamycin;micafungin;posaconazole	4.0	R-strong	8	39472696		1	true
+PEA2	A27T	SNP	A	27	T	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	D367V;Duplication;F191del;F635del	2	true
+PEA2	F191del	Indel	F	191	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;D367V;Duplication;F635del	2	true
+PEA2	D367V	SNP	D	367	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;Duplication;F191del;F635del	2	true
+PEA2	F635del	Indel	F	635	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;D367V;Duplication;F191del	2	true
+PEA2	Duplication	CNV			Duplication	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;D367V;F191del;F635del	2	true
+TAC1	V188A	SNP	V	188	A	fluconazole	8.0	R-weak	1	36445083			false
+TAC1	F191del	Indel	F	191	del	fluconazole	7.0	R-weak	1	33820824			false
+TAC1	F214S	SNP	F	214	S	fluconazole	8.0	R-weak	1	32398311			false
+TAC1	R495G	SNP	R	495	G	fluconazole	8.0	R-weak	1	32398311			false
+TAC1	A640V	SNP	A	640	V	fluconazole	1.0	R-strong	3	32398311;35862787			false
+TAC1	V742A	SNP	V	742	A	fluconazole	4.0	R-strong	1	35862787			false
+TAC1B	A27T	SNP	A	27	T	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	5	33820824	D367V;Duplication;F191del;F635del	1	true
+TAC1B	Y132F	SNP	Y	132	F	fluconazole	8.0	R-weak	1	34915074	A583S	1	true
+TAC1B	F191del	Indel	F	191	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	8	33820824	A27T;D367V;Duplication;F635del	1	true
+TAC1B	L207I	SNP	L	207	I	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	Duplication;F635del;M690I	1	true
+TAC1B	D367V	SNP	D	367	V	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	A27T;Duplication;F191del;F635del	1	true
+TAC1B	A583S	SNP	A	583	S	fluconazole	8.0	R-weak	1	34915074	Y132F	1	true
+TAC1B	F635del	Indel	F	635	del	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	8	33820824	A27T;D367V;Duplication;F191del;L207I;M690I	1	true
+TAC1B	M690I	SNP	M	690	I	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	3	33820824	Duplication;F635del;L207I	1	true
+TAC1B	Duplication	CNV			Duplication	amphotericin_b;caspofungin;fluconazole	7.0	R-weak	11	33820824	A27T;D367V;F191del;F635del;L207I;M690I	1	true
+UBR2	P708T	SNP	P	708	T	fluconazole;voriconazole	1.0	R-strong	4	39480072			false
+UBR2	H1275P	SNP	H	1275	P	fluconazole;voriconazole	1.0	R-strong	4	39480072			false
+UPC2	L499F	SNP	L	499	F	fluconazole;voriconazole	1.0	R-strong	4	39480072		2	true
+UPC2	N592S	SNP	N	592	S	fluconazole;voriconazole	1.0	R-strong	4	39480072		2	true

@@ -1,0 +1,44 @@
+name: "utils_nfcore_epicandi_pipeline"
+description: Pipeline initialisation and completion utilities specific to epicandi/epicandi.
+keywords: [utility, pipeline, initialisation, completion]
+components: [utils_nfschema_plugin, utils_nfcore_pipeline, utils_nextflow_pipeline, completionemail, completionsummary]
+input:
+  - version:
+      type: boolean
+      description: Display version and exit.
+  - validate_params:
+      type: boolean
+      description: Validate parameters against the schema at runtime.
+  - monochrome_logs:
+      type: boolean
+      description: Disable coloured log output.
+  - nextflow_cli_args:
+      type: list
+      description: Positional Nextflow CLI arguments.
+  - outdir:
+      type: string
+      description: Output directory for the pipeline.
+  - input:
+      type: string
+      description: Path to the samplesheet CSV.
+  - help:
+      type: boolean
+      description: Display help message and exit.
+  - help_full:
+      type: boolean
+      description: Display the full detailed help message.
+  - show_hidden:
+      type: boolean
+      description: Display hidden parameters in the help message.
+output:
+  - samplesheet:
+      type: channel
+      description: |
+        Per-sample tuple [meta, illumina_r1_or_empty, illumina_r2_or_empty, nanopore_or_empty]
+        with meta carrying id, dorado_model, batch, is_external (raw boolean),
+        is_external_bool, assembly_type (illumina/nanopore/hybrid), has_illumina, has_nanopore, single_end.
+  - versions:
+      type: channel
+      description: Empty placeholder; per-process versions arrive via the `versions` topic channel.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

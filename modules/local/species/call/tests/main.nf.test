@@ -1,0 +1,33 @@
+nextflow_process {
+
+    name "Test Process SPECIES_CALL"
+    script "../main.nf"
+    process "SPECIES_CALL"
+
+    tag "modules"
+    tag "modules_local"
+    tag "species_call"
+
+    test("stub — sylph only") {
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id: 'test_sample' ],
+                    file("${baseDir}/assets/NO_FILE"),
+                    file("${baseDir}/assets/NO_FILE_RS_ILLU"),
+                    file("${baseDir}/assets/NO_FILE_RS_NANO"),
+                    file("${baseDir}/assets/NO_FILE_AURI")
+                ]
+                input[1] = file("${baseDir}/../epicandi_standalone_v2/assets/epicandi_refs/ref_candida_info.tsv")
+                """
+            }
+        }
+        then {
+            assert process.success
+            assert path(process.out.tsv[0][1]).exists()
+        }
+    }
+}

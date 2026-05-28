@@ -1,0 +1,23 @@
+name: "assembly_short"
+description: Illumina-only assembly route — SPADES → POLYPOLISH → ASM_FINALIZE.
+keywords: [assembly, illumina, spades, polypolish, finalize]
+components: [spades, polypolish, asm/finalize]
+input:
+  - ch_sub_illu:
+      type: channel
+      description: Subsampled Illumina pairs [meta, [R1, R2]].
+output:
+  - assembly:
+      type: channel
+      description: Final assembly [meta, ${id}.fasta].
+  - finalize:
+      type: channel
+      description: Finalize summary TSV.
+  - spades_log:
+      type: channel
+      description: SPAdes log file.
+  - polypolish_log:
+      type: channel
+      description: Polypolish log file.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

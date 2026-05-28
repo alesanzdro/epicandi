@@ -1,0 +1,21 @@
+name: nf-cnvkit
+channels:
+  - bioconda
+  - conda-forge
+# CNVkit conda env for haploid CNV calling in C. auris.
+#
+# Calibrated 2026-05-24 against Cauris_01_smoke (30x BWA-MEM2+MarkDup BAM, 21/21
+# panel genes returned cn=1 normal, wall-clock 55s on 8 threads).
+#
+# CRITICAL for haploid use: always call with
+#   cnvkit.py call --method clonal --ploidy 1 sample.cns -o sample.call.cns
+# `--method threshold` does NOT respect --ploidy 1 (segments come out as cn=2
+# even with --thresholds adjusted). clonal applies round(ploidy * 2^log2)
+# directly, which is exact for clonal-pure haploid isolates.
+#
+# Pins are intentionally loose: cnvkit=0.9.13 pulls compatible biopython/pandas/
+# matplotlib/R as transitive deps. Strict pinning produced libcurl/htslib
+# conflicts (samtools=1.20 + bcftools=1.20 + htslib were unsolvable in 2026-05).
+dependencies:
+  - cnvkit=0.9.13
+  - samtools

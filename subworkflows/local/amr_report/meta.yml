@@ -1,0 +1,29 @@
+name: "amr_report"
+description: Antifungal-resistance report — ChroQueTaS scan + 5-state matrix via chroquetas_join.
+keywords: [amr, chroquetas, fungamr, candida]
+components: [chroquetas, chroquetas/join]
+input:
+  - ch_assembly:
+      type: channel
+      description: Final assembly [meta, fasta].
+  - ch_species_call:
+      type: channel
+      description: Per-sample species_call.tsv.
+  - manifest:
+      type: file
+      description: ref_candida_info.tsv (for ChroQueTaS species arg lookup).
+  - amr_panel:
+      type: file
+      description: epicandi_AMR_panel_unique.tsv.
+  - rosetta:
+      type: file
+      description: candida_rosetta_v2.tsv.
+output:
+  - chroquetas_summary:
+      type: channel
+      description: Raw ChroQueTaS summary TXT (per sample).
+  - resistance_report:
+      type: channel
+      description: 5-state resistance report TSV (per sample).
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

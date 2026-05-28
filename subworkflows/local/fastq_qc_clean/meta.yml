@@ -1,0 +1,20 @@
+name: "fastq_qc_clean"
+description: QC of cleaned reads — FastQC on post-fastp pairs, NanoPlot on post-chopper Nanopore.
+keywords: [qc, fastqc, nanoplot, clean]
+components: [fastqc, nanoplot]
+input:
+  - ch_clean_illu:
+      type: channel
+      description: Cleaned Illumina pairs [meta, [R1, R2]].
+  - ch_clean_nano:
+      type: channel
+      description: Cleaned Nanopore reads [meta, clean.fastq.gz].
+output:
+  - fastqc_zip:
+      type: channel
+      description: FastQC archives.
+  - nanoplot_txt:
+      type: channel
+      description: NanoPlot NanoStats.txt.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

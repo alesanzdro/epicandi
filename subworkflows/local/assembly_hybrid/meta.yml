@@ -1,0 +1,20 @@
+name: "assembly_hybrid"
+description: Hybrid (Illumina + Nanopore) assembly route — FLYE → MEDAKA → POLYPOLISH → ASM_FINALIZE.
+keywords: [assembly, hybrid, flye, medaka, polypolish]
+components: [flye, medaka, polypolish, asm/finalize]
+input:
+  - ch_sub_illu:
+      type: channel
+      description: Subsampled Illumina pairs [meta, [R1, R2]].
+  - ch_sub_nano:
+      type: channel
+      description: Subsampled Nanopore reads [meta, sub_nano.fq.gz].
+output:
+  - assembly:
+      type: channel
+      description: Final assembly [meta, ${id}.fasta].
+  - finalize:
+      type: channel
+      description: Finalize summary TSV.
+authors: ["@alexsanzc"]
+maintainers: ["@alexsanzc"]

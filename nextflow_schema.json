@@ -1,0 +1,392 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/epicandi/epicandi/main/nextflow_schema.json",
+    "title": "epicandi/epicandi pipeline parameters",
+    "description": "EpiCandi v2 — Candida spp QC/Assembly/AMR/Phylogeny pipeline",
+    "type": "object",
+    "$defs": {
+        "input_output_options": {
+            "title": "Input/output options",
+            "type": "object",
+            "fa_icon": "fas fa-terminal",
+            "description": "Where the pipeline finds input data and saves output data.",
+            "required": ["input", "outdir"],
+            "properties": {
+                "input": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "schema": "assets/schema_input.json",
+                    "mimetype": "text/csv",
+                    "pattern": "^\\S+\\.csv$",
+                    "description": "Samplesheet CSV with columns: id, illumina_r1, illumina_r2, nanopore, dorado_model, batch, is_external.",
+                    "help_text": "Use 'NA' for absent reads. illumina_r1/r2=NA → nanopore-only; nanopore=NA → illumina-only; both set → hybrid.",
+                    "fa_icon": "fas fa-file-csv"
+                },
+                "outdir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Output directory.",
+                    "fa_icon": "fas fa-folder-open"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email for completion summary.",
+                    "fa_icon": "fas fa-envelope",
+                    "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+                },
+                "multiqc_title": {
+                    "type": "string",
+                    "description": "MultiQC report title.",
+                    "fa_icon": "fas fa-file-signature"
+                }
+            }
+        },
+        "epicandi_references": {
+            "title": "EpiCandi databases & reference assets",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Pre-built reference databases and the per-species reference panel.",
+            "properties": {
+                "sylph_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Sylph sketch DB built from the 27 reference genomes.",
+                    "help_text": "Default: see conf/test.config"
+                },
+                "busco_lineage": {
+                    "type": "string",
+                    "default": "saccharomycetes_odb12",
+                    "description": "BUSCO lineage name."
+                },
+                "busco_downloads": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "BUSCO downloads cache (offline mode)."
+                },
+                "refs_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Per-slug reference genomes directory (each subdir holds genome.fna.gz + annotation.gff.gz)."
+                },
+                "ref_manifest": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "TSV metadata for the 27 reference genomes (ref_candida_info.tsv)."
+                },
+                "amr_panel": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Curated AMR mutation panel used by chroquetas_join."
+                },
+                "rosetta": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Species name normalization table (candida_rosetta_v2.tsv)."
+                },
+                "screen_bt2_index": {
+                    "type": "string",
+                    "description": "Bowtie2 index basename (Illumina read_screen). Built on-the-fly if absent."
+                },
+                "screen_mmi": {
+                    "type": "string",
+                    "description": "minimap2 .mmi index (Nanopore read_screen). Built on-the-fly if absent."
+                },
+                "phix_fa": {
+                    "type": "string",
+                    "description": "PhiX174 contaminant FASTA (DECONT)."
+                },
+                "lambda_fa": {
+                    "type": "string",
+                    "description": "Lambda contaminant FASTA (DECONT)."
+                },
+                "refs_manifest": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Consolidated TSV manifest (assets/references_manifest.tsv) — single source of truth for SNP-calling. Columns: tag, fasta_path, mask_bed_path, ploidy, genetic_code, clade, is_auris, ncbi_organism, reference_strain, chroquetas_*."
+                },
+                "clair3_models_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Directory containing per-Dorado-model Clair3 model subdirs. User-downloaded from the Rerio clair3_models index."
+                }
+            }
+        },
+        "snp_calling": {
+            "title": "SNP-calling layer (GATK4 + Clair3)",
+            "type": "object",
+            "fa_icon": "fas fa-project-diagram",
+            "description": "Parameters for the multi-platform ploidy-aware SNP-calling layer. See docs/gatk4/README.md for design rationale.",
+            "properties": {
+                "skip_snp_calling": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Skip the entire SNP-calling subworkflow (useful for assembly-only runs)."
+                },
+                "skip_cnv": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Skip the CNV layer (mosdepth + CNVkit + AMR-CNV modulation). Requires SNP_CALLING for the dedup BAM."
+                },
+                "cnv_panel": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to CNV panel TSV (gene, tier, mechanism, drug_class, expected_event, ...).",
+                    "default": "${projectDir}/assets/cnv_loci/panel.tsv"
+                },
+                "cnv_coords_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Directory with pre-computed coords_<reference_tag>.tsv files (one per reference).",
+                    "default": "${projectDir}/assets/cnv_loci/coords_pre"
+                },
+                "cnv_amr_rules": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "TSV of curated CNV-event -> AMR-call modulation rules.",
+                    "default": "${projectDir}/assets/cnv_loci/cnv_amr_rules.tsv"
+                },
+                "cnvkit_ploidy": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": "Ploidy for cnvkit call --method clonal. Auris is haploid (1)."
+                },
+                "cnv_canonical_proteins_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Directory with canonical <GENE>.faa proteins for AMR mutation extraction.",
+                    "default": "${projectDir}/assets/cnv_loci/canonical_proteins"
+                },
+                "cnv_mutation_catalog": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "FungAMR-derived mutation catalog (auris).",
+                    "default": "${projectDir}/assets/cnv_loci/mutation_catalog_auris.tsv"
+                },
+                "candida_genetic_code": {
+                    "type": "integer",
+                    "default": 12,
+                    "description": "NCBI translation table for Candida (12 = Yeast Alternative, CUG -> Ser)."
+                },
+                "hc_min_pruning":  { "type": "integer", "default": 1, "description": "HaplotypeCaller --min-pruning." },
+                "hc_min_dangling": { "type": "integer", "default": 1, "description": "HaplotypeCaller --min-dangling-branch-length." },
+                "clair3_default_model":    { "type": "string", "default": "r1041_e82_400bps_sup_v500", "description": "Clair3 model subdir used when samplesheet.dorado_model is NA." },
+                "clair3_include_all_ctgs": { "type": "boolean", "default": true, "description": "Clair3 --include_all_ctgs." },
+                "clair3_min_coverage":     { "type": "integer", "default": 4, "description": "Clair3 --min_coverage." },
+                "clair3_min_dp":           { "type": "integer", "default": 8, "description": "Genotype DP threshold for Nanopore (MEDIUM tier)." },
+                "clair3_min_qual":         { "type": "integer", "default": 15, "description": "Site QUAL threshold for Nanopore (MEDIUM tier)." },
+                "clair3_max_missing_site": { "type": "number",  "default": 0.1, "description": "Max F_MISSING per site (MEDIUM tier)." },
+                "gatk_min_dp":             { "type": "integer", "default": 10, "description": "Genotype DP threshold for Illumina (HIGH tier)." },
+                "gatk_min_gq":             { "type": "integer", "default": 30, "description": "Genotype GQ threshold for Illumina (HIGH tier)." },
+                "gatk_max_missing_site":   { "type": "number",  "default": 0.1, "description": "Max F_MISSING per site (HIGH tier)." },
+                "snpdists_min_comparable_frac": { "type": "number", "default": 0.8, "description": "Min comparable fraction for a pairwise SNP distance to be reported." },
+                "transmission_threshold_snps":  { "type": "integer", "default": 6, "description": "Heuristic transmission threshold (SNPs). Heuristic — validate against technical duplicates." },
+                "cohort_min_samples":           { "type": "integer", "default": 3, "description": "Minimum samples per cohort to trigger joint genotyping + downstream." },
+                "iqtree_model":     { "type": "string",  "default": "GTR+G+ASC", "description": "IQ-TREE substitution model (-m). +ASC obligatory for SNP-only alignments." },
+                "iqtree_bootstrap": { "type": "integer", "default": 1000, "description": "Ultrafast bootstrap replicates (-B)." },
+                "iqtree_alrt":      { "type": "integer", "default": 1000, "description": "SH-aLRT replicates (-alrt)." },
+                "filtlong_min_length": { "type": "integer", "default": 1000, "description": "filtlong --min_length on Nanopore SNP path." },
+                "filtlong_min_mean_q": { "type": "integer", "default": 90, "description": "filtlong --min_mean_q (filtlong 0-100 scale, NOT Phred direct)." }
+            }
+        },
+        "epicandi_steps": {
+            "title": "EpiCandi pipeline step controls",
+            "type": "object",
+            "fa_icon": "fas fa-cogs",
+            "description": "Flags and per-step parameters that match the standalone v2 defaults.",
+            "properties": {
+                "skip_decont": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Skip decontamination (phiX/lambda). v2 default ON for SRA cohorts."
+                },
+                "skip_readscreen": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Skip per-read screening against the 27-ref panel."
+                },
+                "target_coverage": { "type": "integer", "default": 100, "description": "Target read coverage for subsampling." },
+                "subsample_seed":  { "type": "integer", "default": 100, "description": "Seed for seqtk sampling (reproducibility)." },
+                "illumina_min_len":  { "type": "integer", "default": 50, "description": "fastp --length_required." },
+                "illumina_min_qual": { "type": "integer", "default": 25, "description": "fastp --qualified_quality_phred." },
+                "nanopore_min_len":  { "type": "integer", "default": 1000, "description": "chopper --minlength." },
+                "nanopore_min_qual": { "type": "integer", "default": 10, "description": "chopper --quality." },
+                "read_screen_n_illu": { "type": "integer", "default": 100000, "description": "Pairs subsampled per Illumina read_screen." },
+                "read_screen_n_nano": { "type": "integer", "default": 10000,  "description": "Reads subsampled per Nanopore read_screen." },
+                "qc_min_reads":    { "type": "integer", "default": 1000000, "description": "QC_GATE PASS threshold (reads, legacy)." },
+                "qc_warn_reads":   { "type": "integer", "default": 100000,  "description": "QC_GATE WARN threshold (reads, legacy)." },
+                "qc_max_contam":   { "type": "integer", "default": 30, "description": "QC_GATE FAIL on contamination percent (kept as one of the 5 AND criteria)." },
+                "qc_warn_contam":  { "type": "integer", "default": 10, "description": "QC_GATE WARN contamination percent (legacy)." },
+                "qc_min_ani":         { "type": "number",  "default": 97.0, "description": "QC_GATE v2: minimum Sylph Adjusted_ANI for the assigned species (%)." },
+                "qc_min_sylph_cov":   { "type": "number",  "default": 85.0, "description": "QC_GATE v2: minimum Sylph taxonomic abundance for the assigned species (%)." },
+                "qc_min_align_rate":  { "type": "number",  "default": 90.0, "description": "QC_GATE v2: minimum % of read_screen reads aligned to the winning ref." },
+                "qc_min_depth":       { "type": "number",  "default": 30.0, "description": "QC_GATE v2: minimum estimated mean depth (X) on the winning ref." },
+                "asm_minlen":      { "type": "integer", "default": 500, "description": "Minimum contig length retained after FINALIZE." },
+                "spades_mem_gb":   { "type": "integer", "default": 32,  "description": "RAM for SPAdes (-m)." },
+                "ani_high_conf":   { "type": "number", "default": 97.0, "description": "Sylph ANI threshold for species_call high_conf." },
+                "ani_low_conf":    { "type": "number", "default": 95.0, "description": "Sylph ANI threshold for species_call low_conf." },
+                "readscreen_pct_top":         { "type": "number", "default": 85.0, "description": "READ_SCREEN top-species purity for high_conf." },
+                "readscreen_pct_unmapped_max": { "type": "number", "default": 50.0, "description": "READ_SCREEN unmapped percent above which → novel_or_contamination." },
+                "phylo_min_samples": { "type": "integer", "default": 3, "description": "Minimum samples per species/clade to trigger the phylogeny subworkflow." }
+            }
+        },
+        "institutional_config_options": {
+            "title": "Institutional config options",
+            "type": "object",
+            "fa_icon": "fas fa-university",
+            "description": "Parameters used to describe centralised config profiles. These should not be edited.",
+            "properties": {
+                "custom_config_version": {
+                    "type": "string",
+                    "description": "Git commit id for Institutional configs.",
+                    "default": "master",
+                    "hidden": true,
+                    "fa_icon": "fas fa-users-cog"
+                },
+                "custom_config_base": {
+                    "type": "string",
+                    "description": "Base directory for Institutional configs.",
+                    "default": "https://raw.githubusercontent.com/nf-core/configs/master",
+                    "hidden": true,
+                    "fa_icon": "fas fa-users-cog"
+                },
+                "config_profile_name": {
+                    "type": "string",
+                    "description": "Institutional config name.",
+                    "hidden": true,
+                    "fa_icon": "fas fa-users-cog"
+                },
+                "config_profile_description": {
+                    "type": "string",
+                    "description": "Institutional config description.",
+                    "hidden": true,
+                    "fa_icon": "fas fa-users-cog"
+                },
+                "config_profile_contact": {
+                    "type": "string",
+                    "description": "Institutional config contact information.",
+                    "hidden": true,
+                    "fa_icon": "fas fa-users-cog"
+                },
+                "config_profile_url": {
+                    "type": "string",
+                    "description": "Institutional config URL link.",
+                    "hidden": true,
+                    "fa_icon": "fas fa-users-cog"
+                }
+            }
+        },
+        "generic_options": {
+            "title": "Generic options",
+            "type": "object",
+            "fa_icon": "fas fa-file-import",
+            "description": "Less common options for the pipeline, typically set in a config file.",
+            "properties": {
+                "version": {
+                    "type": "boolean",
+                    "description": "Display version and exit.",
+                    "fa_icon": "fas fa-question-circle",
+                    "hidden": true
+                },
+                "publish_dir_mode": {
+                    "type": "string",
+                    "default": "copy",
+                    "description": "Method used to save pipeline results to output directory.",
+                    "fa_icon": "fas fa-copy",
+                    "enum": ["symlink", "rellink", "link", "copy", "copyNoFollow", "move"],
+                    "hidden": true
+                },
+                "email_on_fail": {
+                    "type": "string",
+                    "description": "Email address for completion summary, only when pipeline fails.",
+                    "fa_icon": "fas fa-exclamation-triangle",
+                    "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
+                    "hidden": true
+                },
+                "plaintext_email": {
+                    "type": "boolean",
+                    "description": "Send plain-text email instead of HTML.",
+                    "fa_icon": "fas fa-remove-format",
+                    "hidden": true
+                },
+                "max_multiqc_email_size": {
+                    "type": "string",
+                    "description": "File size limit when attaching MultiQC reports to summary emails.",
+                    "pattern": "^\\d+(\\.\\d+)?\\.?\\s*(K|M|G|T)?B$",
+                    "default": "25.MB",
+                    "fa_icon": "fas fa-file-upload",
+                    "hidden": true
+                },
+                "monochrome_logs": {
+                    "type": "boolean",
+                    "description": "Do not use coloured log outputs.",
+                    "fa_icon": "fas fa-palette",
+                    "hidden": true
+                },
+                "multiqc_config": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Custom config file to supply to MultiQC.",
+                    "fa_icon": "fas fa-cog",
+                    "hidden": true
+                },
+                "multiqc_logo": {
+                    "type": "string",
+                    "description": "Custom logo file to supply to MultiQC.",
+                    "fa_icon": "fas fa-image",
+                    "hidden": true
+                },
+                "multiqc_methods_description": {
+                    "type": "string",
+                    "description": "Custom MultiQC yaml file containing HTML including a methods description.",
+                    "fa_icon": "fas fa-cog"
+                },
+                "validate_params": {
+                    "type": "boolean",
+                    "description": "Boolean whether to validate parameters against the schema at runtime",
+                    "default": true,
+                    "fa_icon": "fas fa-check-square",
+                    "hidden": true
+                },
+                "pipelines_testdata_base_path": {
+                    "type": "string",
+                    "fa_icon": "far fa-check-circle",
+                    "description": "Base URL or local path to location of pipeline test dataset files",
+                    "default": "https://raw.githubusercontent.com/nf-core/test-datasets/",
+                    "hidden": true
+                },
+                "trace_report_suffix": {
+                    "type": "string",
+                    "fa_icon": "far calendar",
+                    "description": "Suffix to add to the trace report filename. Default is the date and time in the format yyyy-MM-dd_HH-mm-ss.",
+                    "hidden": true
+                },
+                "help": {
+                    "type": ["boolean", "string"],
+                    "description": "Display the help message."
+                },
+                "help_full": {
+                    "type": "boolean",
+                    "description": "Display the full detailed help message."
+                },
+                "show_hidden": {
+                    "type": "boolean",
+                    "description": "Display hidden parameters in the help message."
+                }
+            }
+        }
+    },
+    "allOf": [
+        { "$ref": "#/$defs/input_output_options" },
+        { "$ref": "#/$defs/epicandi_references" },
+        { "$ref": "#/$defs/epicandi_steps" },
+        { "$ref": "#/$defs/snp_calling" },
+        { "$ref": "#/$defs/institutional_config_options" },
+        { "$ref": "#/$defs/generic_options" }
+    ]
+}

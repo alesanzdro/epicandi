@@ -1,0 +1,6 @@
+# resources/ holds symlinks/copies of large external assets (references,
+# sylph DB, busco lineages, clair3 models, FungAMR). These are not tracked
+# in git — set them up locally with the symlinks documented in README.
+*
+!.gitignore
+!README.md
