@@ -59,19 +59,45 @@
 
 ## 2. Auditoría del módulo del reporte HTML
 
-Módulo auditado: **`modules/local/generate_report/main.nf`**.
+### 2.1 Estado actual
 
-✅ **Resultado: limpio**. Inputs vienen 100 % de channels Nextflow:
+Hay **dos componentes** detrás del HTML report:
+
+1. **Módulo Nextflow** — `modules/local/generate_report/main.nf` (proceso
+   `GENERATE_REPORT`).  Definido y con sus inputs en forma de channels
+   (limpio según el criterio del briefing), **pero NO está conectado** al
+   workflow `EPICANDI` en `workflows/epicandi.nf` ni en `main.nf`.
+   `grep -rn "GENERATE_REPORT" workflows/ main.nf` → vacío.
+2. **Script Python** — `bin/generate_epicandi_report.py` (3000+ líneas).
+   **Sí** está en `bin/` del pipeline, autocontenido (sólo importa pandas,
+   numpy, matplotlib, plotly, openpyxl, networkx, scipy), **sin** rutas
+   hardcoded (`grep -n "/home/asanzc/" bin/generate_epicandi_report.py`
+   → vacío).
+
+### 2.2 Cómo se genera el reporte hoy
+
+Tras correr el pipeline, el usuario invoca manualmente el script:
+
+```bash
+python3 bin/generate_epicandi_report.py \
+    --results-dir results/                       \
+    --run-name 260528_MyRun                       \
+    --samplesheet samplesheet.csv                 \
+    --branding branding/                          \
+    --output results/00_report/260528_MyRun_epicandi_report.html
+```
+
+Los `--*` son CLI args que apuntan a rutas relativas a la invocación,
+**ningún** path absoluto del sistema queda dentro del script.
+
+### 2.3 Auditoría del módulo (cuando se conecte)
 
 ```nextflow
 input:
-path results_dir         // ← canal de upstream (publishDir consolidado)
+path results_dir         // ← canal upstream (publishDir consolidado)
 path samplesheet         // ← canal desde params.input
 path branding_dir        // ← canal desde branding/ del pipeline
 ```
-
-El script `bin/generate_epicandi_report.py` se invoca directamente (Nextflow
-mete `bin/` en el `$PATH` automáticamente).  Sin rutas hardcoded.
 
 ```nextflow
 script:
@@ -85,18 +111,25 @@ generate_epicandi_report.py \\
 """
 ```
 
-### Scripts adicionales que invoca el reporte
+✅ Inputs por canal · ✅ Script en `bin/` propio · ✅ Sin rutas absolutas
+· ⏳ Falta wirearlo en `workflows/epicandi.nf` para que se ejecute
+automáticamente al final de cada run.
 
-El script `generate_epicandi_report.py` es **autocontenido**: solo importa
-librerías Python (pandas, numpy, matplotlib, plotly, openpyxl, networkx,
-scipy).  No invoca scripts externos al pipeline.  No lee rutas absolutas.
+### 2.4 TODO (follow-up)
 
-Verificación con grep:
+Wirear `GENERATE_REPORT` al final de `workflows/epicandi.nf`:
 
-```bash
-$ grep -n "/home/asanzc/\|/scratch\|/tmp/" bin/generate_epicandi_report.py
-(empty — sin rutas hardcoded)
+```groovy
+GENERATE_REPORT(
+    channel.fromPath(params.outdir).first(),   // results_dir (consume publishDir at end)
+    file(params.input),                         // samplesheet
+    file("${projectDir}/branding")              // branding
+)
 ```
+
+Y añadir un sync-channel (e.g. `MULTIQC.out.report.toList()`) para que se
+ejecute después de todo lo demás.  Como mejora menor, no bloquea esta
+release.
 
 ---
 
